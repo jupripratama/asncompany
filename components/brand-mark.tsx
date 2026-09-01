@@ -9,23 +9,36 @@ const brandLogos: Record<string, string> = {
   Honeywell: "/images/brands/honeywell.svg",
 };
 
-export function BrandMark({ brand, compact = false }: { brand: string; compact?: boolean }) {
+export function BrandMark({
+  brand,
+  compact = false,
+  className,
+}: {
+  brand: string;
+  compact?: boolean;
+  className?: string;
+}) {
   const logoSrc = brandLogos[brand];
 
   return (
-    <span className={cn(
-      "grid min-w-0 place-items-center overflow-hidden rounded-xl border border-slate-200 bg-white px-3 text-center font-black tracking-tight text-slate-700 shadow-sm dark:border-slate-600 dark:bg-white dark:shadow-black/25",
-      compact ? "min-h-10 text-[11px]" : "min-h-16 text-sm",
-    )}>
+    <span
+      className={cn(
+        "grid min-w-0 place-items-center overflow-hidden rounded-xl border border-slate-200 bg-white px-3 text-center font-black tracking-tight text-slate-700 shadow-sm dark:border-slate-600 dark:bg-white dark:shadow-black/25",
+        compact ? "min-h-9 px-2.5 text-[11px]" : "min-h-16 text-sm",
+        className,
+      )}
+    >
       {logoSrc ? (
         <Image
           src={logoSrc}
           alt={`Logo ${brand}`}
           width={180}
           height={64}
-          className={cn("max-w-full object-contain", compact ? "max-h-4 w-full" : "max-h-7 w-full")}
+          className={cn("max-w-full object-contain", compact ? "max-h-4.5 w-auto" : "max-h-7 w-full")}
         />
-      ) : brand}
+      ) : (
+        brand
+      )}
     </span>
   );
 }

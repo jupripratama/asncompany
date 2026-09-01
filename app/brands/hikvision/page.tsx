@@ -59,9 +59,12 @@ export default function HikvisionBrandPage() {
 
         <div className="mt-9 grid gap-6 lg:grid-cols-3">
           {hikvisionProducts.map((product) => (
-            <article key={product.model} className="surface-card flex h-full flex-col overflow-hidden !p-0">
+            <article key={product.model} className="surface-card flex h-full flex-col overflow-hidden !p-0 transition hover:border-cyan-500/50 hover:shadow-lg">
               <div className="relative aspect-[4/3] border-b border-slate-200 bg-white p-5 dark:border-slate-700">
                 <Image src={product.image} alt={`${product.name} ${product.model}`} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-contain p-5 transition duration-500 hover:scale-[1.025]" />
+                <div className="absolute top-4 left-4 z-10">
+                  <BrandMark brand="Hikvision" compact className="!h-8 !min-h-0 px-3 shadow-md bg-white/95 backdrop-blur-sm border-slate-200" />
+                </div>
                 <span className="absolute top-4 right-4 rounded-full bg-slate-950/85 px-3 py-1.5 text-[9px] font-black tracking-wide text-white uppercase">{product.category}</span>
               </div>
               <div className="flex flex-1 flex-col p-6">

@@ -213,24 +213,17 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                       sizes="(min-width: 1024px) 33vw, 100vw"
                       className="object-contain p-5 transition duration-500 hover:scale-[1.025]"
                     />
-                    <div className="absolute top-4 right-4 flex items-center gap-1.5">
-                      {variant.brand && (
-                        <span className="rounded-md bg-white/95 px-2 py-1 text-[10px] font-black tracking-wider text-slate-900 shadow-sm uppercase border border-slate-200">
-                          {variant.brand}
-                        </span>
-                      )}
-                      <span className="rounded-md bg-slate-950/85 px-2 py-1 text-[9px] font-black tracking-wide text-white uppercase">
-                        {variant.categoryTag || variant.badge || product.categoryLabel}
-                      </span>
-                    </div>
+                    {variant.brand && (
+                      <div className="absolute top-4 left-4 z-10">
+                        <BrandMark brand={variant.brand} compact className="!h-8 !min-h-0 px-3 shadow-md bg-white/95 backdrop-blur-sm border-slate-200" />
+                      </div>
+                    )}
+                    <span className="absolute top-4 right-4 rounded-full bg-slate-950/85 px-3 py-1.5 text-[9px] font-black tracking-wide text-white uppercase">
+                      {variant.categoryTag || variant.badge || product.categoryLabel}
+                    </span>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="font-mono text-xs font-bold text-cyan-700 dark:text-cyan-300">{variant.code}</p>
-                      {variant.brand && (
-                        <span className="text-[10px] font-bold text-slate-400">By {variant.brand}</span>
-                      )}
-                    </div>
+                    <p className="font-mono text-xs font-bold text-cyan-700 dark:text-cyan-300">{variant.code}</p>
                     <h3 className="mt-2 text-lg font-black leading-6 text-slate-950 dark:text-white">{variant.name}</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{variant.description}</p>
                     <ul className="mt-5 flex-1 space-y-2">
