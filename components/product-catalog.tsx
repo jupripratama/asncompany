@@ -72,7 +72,7 @@ export function ProductCatalog() {
         {filtered.map((product) => {
           const CategoryIcon = categoryIcons[product.category];
           const brandLabel = product.brands?.length === 1 ? "Merek produk" : "Pilihan brand";
-          const detailHref = `/products/${product.slug}`;
+          const detailHref = product.slug === "hikvision-cctv-system" ? "/brands/hikvision" : `/products/${product.slug}`;
           return <article key={product.name} className="surface-card flex h-full flex-col overflow-hidden !p-0 transition hover:border-cyan-500/50 hover:shadow-lg">
             <ProductImageSlider images={product.images} productName={product.name} categoryLabel={product.categoryLabel} />
             <div className="flex flex-1 flex-col p-6">
