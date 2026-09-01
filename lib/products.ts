@@ -54,7 +54,7 @@ function representativeVisual(category: ProductCategory, filename: string, produ
 }
 
 const productEntries: ProductInput[] = [
-  // ==================== 1. MINING TOOLS (Non-Branded / Engineering Standards) ====================
+  // ==================== 1. MINING TOOLS ====================
   {
     name: "Drill Bit",
     category: "mining",
@@ -70,6 +70,50 @@ const productEntries: ProductInput[] = [
       { src: "/images/products/mining/drill-bit-05.jpeg", alt: "Drag bit dengan carbide picks" },
       { src: "/images/products/mining/drill-bit-06.jpeg", alt: "Carbide mining pick untuk drilling tool" },
     ],
+    variants: [
+      {
+        code: "T38 / T45 Button Bit",
+        name: "Top Hammer Threaded Button Bit (64mm - 89mm)",
+        categoryTag: "Top Hammer • Button Bit",
+        badge: "Heavy Duty",
+        image: "/images/products/mining/drill-bit-01.jpeg",
+        description: "Mata bor ulir T38 dan T45 dengan tombol tungsten carbide bulat/semi-balistik untuk penetrasi cepat di batuan andesit dan granit.",
+        features: [
+          "Diameter kepala 64mm, 76mm, 89mm",
+          "Desain face flat dan drop center untuk kelurusan lubang",
+          "Tombol karbida tahan aus perlakuan panas karburisasi",
+          "Flushing port ganda untuk pembuangan serbuk batu optimal",
+        ],
+      },
+      {
+        code: "T51 / GT60 Retrac Bit",
+        name: "Retrac & Guide Threaded Drill Bit (89mm - 127mm+)",
+        categoryTag: "Top Hammer • Retrac Bit",
+        badge: "Deep Drilling",
+        image: "/images/products/mining/drill-bit-04.jpeg",
+        description: "Mata bor bodi bersirip (retrac skirt) untuk menjaga kelurusan lubang bor dalam dan mempermudah penarikan drill string saat batuan rekah.",
+        features: [
+          "Diameter kepala 89mm, 102mm, 115mm, 127mm+",
+          "Bodi retrac bersirip alur pengarah serbuk bor",
+          "Sistem ulir besar T51 dan GT60 untuk transfer energi tinggi",
+          "Cocok untuk rig pengeboran tambang terbuka kelas 20-35 ton",
+        ],
+      },
+      {
+        code: "TCI Rotary Bit",
+        name: "Tungsten Carbide Insert (TCI) Roller Cone Bit",
+        categoryTag: "Rotary Drilling • Roller Bit",
+        badge: "Rotary Drill",
+        image: "/images/products/mining/drill-bit-05.jpeg",
+        description: "Mata bor rotary 3 konus untuk pengeboran lubang ledak diameter besar pada batuan abrasif formasi batubara dan mineral.",
+        features: [
+          'Diameter 6-3/4" hingga 12-1/4" dengan IADC standard codes',
+          "Bearing tertutup berpelumas gemuk (Sealed Journal Bearing)",
+          "Proteksi sisipan karbida pada dinding luar konus (Heel Row)",
+          "Umur pakai panjang pada tekanan pull-down dan RPM tinggi",
+        ],
+      },
+    ],
   },
   {
     name: "Drill Rod",
@@ -79,6 +123,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Pilihan profil Round dan Hexagonal", "Sistem ulir T38, T45, T51, GT60", "Tipe Male-Female (MF) & Extension Rod", "Perlakuan panas karburisasi anti-fatik"],
     standards: ["Round 39 / 46 / 52 / 60", "Carburized Alloy Steel", "ISO 10208"],
     images: [{ src: "/images/products/mining/drill-rod-01.jpeg", alt: "Pilihan drill rod berulir untuk aplikasi pertambangan" }],
+    variants: [
+      {
+        code: "MF Extension Rod",
+        name: "Male-Female (MF) Speed Rod T38 / T45 / T51",
+        categoryTag: "Speed Rod • Male-Female",
+        badge: "Speed Rod",
+        image: "/images/products/mining/drill-rod-01.jpeg",
+        description: "Batang bor dengan satu ujung ulir jantan dan satu ujung betina terintegrasi tanpa memerlukan coupling sleeve tambahan.",
+        features: [
+          "Panjang 3.05m, 3.66m, 4.27m (10ft - 14ft)",
+          "Menghilangkan sambungan coupling sleeve untuk transfer energi lebih padat",
+          "Baja paduan hollow round dengan perlakuan panas karburisasi penuh",
+          "Ulir presisi tinggi tahan panas dan anti-seize",
+        ],
+      },
+      {
+        code: "Extension Rod & Hex",
+        name: "Extension Drill Rod Round & Hexagonal (R32 / T38)",
+        categoryTag: "Extension Rod",
+        badge: "Standard Rod",
+        image: "/images/products/mining/drill-rod-01.jpeg",
+        description: "Batang bor dengan kedua ujung ulir jantan (Male-Male) untuk pengeboran drifting, tunneling, dan fondasi.",
+        features: [
+          "Profil Round 32, Round 39, Hex 32, Hex 35",
+          "Digunakan bersama coupling sleeve standar",
+          "Ketahanan tekuk tinggi untuk akurasi kelurusan lubang",
+          "Dinding lubang bilas (flushing hole) halus anti-korosi",
+        ],
+      },
+    ],
   },
   {
     name: "Shank Adapter",
@@ -88,6 +162,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Kompatibel Epiroc, Sandvik, Furukawa, Montabert", "Pilihan ulir T38, T45, T51, GT60", "Forged alloy steel dengan hardening presisi", "Toleransi splines presisi tinggi"],
     standards: ["Epiroc COP1838", "Sandvik HLX5", "Furukawa HD709"],
     images: [{ src: "/images/products/mining/coupling-adapter-01.jpeg", alt: "Pilihan coupling dan adapter untuk rangkaian drill string" }],
+    variants: [
+      {
+        code: "Shank Epiroc Series",
+        name: "Striking Bar / Shank Adapter for Epiroc COP Drifter",
+        categoryTag: "Drifter Shank • Epiroc",
+        badge: "Epiroc Fit",
+        image: "/images/products/mining/coupling-adapter-01.jpeg",
+        description: "Shank adapter kompatibel drifter Epiroc COP1838, COP1238, COP2160, COP4050 dengan sistem ulir T38/T45/T51.",
+        features: [
+          "Baja paduan tempa kualitas tinggi dengan pengerasan permukaan presisi",
+          "Splines transmisi putaran presisi anti-slip dan anti-aus",
+          "Saluran flushing internal bertekanan tinggi",
+          "Didesain menyerap gelombang pantul impak drifter",
+        ],
+      },
+      {
+        code: "Shank Sandvik Series",
+        name: "Shank Adapter for Sandvik HLX5 / HL500 / HL710 Drifter",
+        categoryTag: "Drifter Shank • Sandvik",
+        badge: "Sandvik Fit",
+        image: "/images/products/mining/coupling-adapter-01.jpeg",
+        description: "Shank adapter kompatibel drifter Sandvik Tamrock HLX5, HL500, HL710, HL1000 dengan ulir T38, T45, T51, GT60.",
+        features: [
+          "Dimensi splines dan panjang shank presisi 100% OEM fit",
+          "Perlakuan panas khusus mencegah retak lelah pada bahu impak",
+          "Mendukung kerja tekanan drifter hidrolik hingga 220 bar",
+          "Dilengkapi seal ring groove tahan oli dan air bilas",
+        ],
+      },
+    ],
   },
   {
     name: "Coupling Sleeve",
@@ -97,6 +201,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Tipe Semi-Bridge dan Full-Bridge", "Ukuran T38, T45, T51, GT60", "Tersedia Crossover Adapter", "Tahan beban puntir dan benturan berat"],
     standards: ["T38 / T45 / T51 Couplings", "ISO 10208"],
     images: [{ src: "/images/products/mining/coupling-adapter-01.jpeg", alt: "Pilihan coupling sleeve dan adapter berulir" }],
+    variants: [
+      {
+        code: "Semi-Bridge Coupling",
+        name: "Standard Semi-Bridge Coupling Sleeve (T38 / T45 / T51)",
+        categoryTag: "Coupling • Semi-Bridge",
+        badge: "Standard Bridge",
+        image: "/images/products/mining/coupling-adapter-01.jpeg",
+        description: "Coupling sleeve dengan jembatan tengah (bridge) kecil untuk memastikan kedua ujung batang bor bertemu tepat di titik pusat transfer impak.",
+        features: [
+          "Ukuran ulir T38 (55mm OD), T45 (63mm OD), T51 (71mm OD)",
+          "Mengalirkan energi impak langsung batang-ke-batang",
+          "Material baja karburisasi tahan aus pada gesekan lubang",
+          "Mudah dilepas saat pergantian batang bor di lapangan",
+        ],
+      },
+      {
+        code: "Crossover Adapter",
+        name: "Thread Crossover & Reducer Coupling Sleeve",
+        categoryTag: "Coupling • Crossover",
+        badge: "Adapter",
+        image: "/images/products/mining/coupling-adapter-01.jpeg",
+        description: "Sleeve penyambung dua ukuran ulir berbeda (misal T38 ke T45, atau T45 ke T51) untuk fleksibilitas rangkaian bor.",
+        features: [
+          "Konversi ulir T38-T45, T45-T51, T51-GT60",
+          "Mencegah konsentrasi tegangan pada transisi diameter",
+          "Mempermudah adaptasi bit baru pada rod eksisting",
+          "Dinding tebal tahan torsi puntir tinggi",
+        ],
+      },
+    ],
   },
   {
     name: "DTH Hammer",
@@ -106,6 +240,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Pilihan seri DHD 3.5, QL 40/50/60, Mission 50/60", "Tekanan kerja 10 hingga 30 Bar", "Desain valveless & with foot valve", "Dinding luar tebal tahan abrasi"],
     standards: ["DHD 3.5", "QL 50 / QL 60", "Mission 50 / 60"],
     images: representativeVisual("mining", "dth-hammer.png", "DTH Hammer"),
+    variants: [
+      {
+        code: "QL Series DTH Hammer",
+        name: "High-Pressure DTH Hammer QL 50 / QL 60 (5\" - 6\")",
+        categoryTag: "DTH Hammer • High Pressure",
+        badge: "QL Series",
+        image: "/images/products/mining/dth-hammer.png",
+        description: "Hammer DTH shank QL series tanpa foot valve untuk pengeboran lubang ledak kecepatan tinggi pada tekanan kompresor 15-28 bar.",
+        features: [
+          'Diameter lubang 130mm hingga 165mm (5" - 6-1/2")',
+          "Frekuensi impak tinggi dengan konsumsi udara efisien",
+          "Piston berat dengan siklus kerja optimal pada batuan keras",
+          "Pilihan bodi standar atau heavy-duty wear sleeve",
+        ],
+      },
+      {
+        code: "DHD Series DTH Hammer",
+        name: "Heavy-Duty DTH Hammer DHD 3.5 / DHD 350 (3.5\" - 5\")",
+        categoryTag: "DTH Hammer • DHD Series",
+        badge: "DHD Series",
+        image: "/images/products/mining/dth-hammer.png",
+        description: "Hammer DTH terbukti tangguh untuk pengeboran sumur air, eksplorasi mineral, dan fondasi bored pile.",
+        features: [
+          'Diameter lubang 90mm hingga 140mm (3.5" - 5.5")',
+          "Desain sederhana mudah dibongkar-pasang untuk maintenance",
+          "Kompatibel berbagai merek rig DTH portabel dan crawler",
+          "Konstruksi baja paduan kualitas militer tahan benturan",
+        ],
+      },
+    ],
   },
   {
     name: "Reaming Tools",
@@ -115,6 +279,22 @@ const productEntries: ProductInput[] = [
     highlights: ["Reaming bit diameter 102mm s/d 152mm+", "Pilot adapter ulir R32, T38, T45", "Tombol tungsten carbide padat", "Flushing efisien pembuangan serbuk batu"],
     standards: ["Reaming Bit 102mm - 152mm", "R32 / T38 / T45 Pilot"],
     images: representativeVisual("mining", "reaming-tools.png", "Reaming Tools"),
+    variants: [
+      {
+        code: "Reaming Bit 102mm - 152mm",
+        name: "Dome & Tapered Reaming Bit with Pilot Adapter",
+        categoryTag: "Reaming Tools • Tunneling",
+        badge: "Reaming Bit",
+        image: "/images/products/mining/reaming-tools.png",
+        description: "Mata reaming untuk memperbesar lubang potong (cut hole) pada pengeboran terowongan tambang bawah tanah.",
+        features: [
+          "Diameter pelebaran 102mm, 127mm, 152mm (4\" - 6\")",
+          "Menggunakan pilot adapter ulir R32 / T38 sebagai pemandu",
+          "Tombol karbida tahan impak tinggi di seluruh muka kubah",
+          "Mempercepat siklus peledakan cut hole tunneling",
+        ],
+      },
+    ],
   },
   {
     name: "Aksesoris Drilling Equipment",
@@ -124,9 +304,39 @@ const productEntries: ProductInput[] = [
     highlights: ["High-Temp Copper Thread Grease (1100°C)", "Fishing Tools (Spears & Taps)", "Bit Retainer Ring & Basket", "Sub & Thread Adapters"],
     standards: ["Anti-Seize 1100°C", "Alloy Steel Retrieval"],
     images: representativeVisual("mining", "drilling-accessories.png", "Aksesoris Drilling Equipment"),
+    variants: [
+      {
+        code: "Copper Thread Grease",
+        name: "High-Temperature Copper Drilling Thread Grease (1100°C)",
+        categoryTag: "Lubricant • Thread Grease",
+        badge: "Anti-Seize",
+        image: "/images/products/mining/drilling-accessories.png",
+        description: "Gemuk ulir tembaga berkekuatan tinggi untuk mencegah pengelasan dingin (galling) dan aus ulir rod/bit pada temperatur dan beban impak ekstrem.",
+        features: [
+          "Tahan temperatur hingga 1100°C dengan serbuk tembaga mikron",
+          "Mencegah ulir macet (anti-seize) saat pelepasan pipa bor",
+          "Tahan air bilas (water washout resistant) dan anti-karat",
+          "Tersedia kemasan ember 5kg, 10kg, dan drum 180kg",
+        ],
+      },
+      {
+        code: "Fishing Recovery Tools",
+        name: "Drill String Recovery Fishing Taps & Overshots",
+        categoryTag: "Recovery • Fishing Tools",
+        badge: "Fishing Tool",
+        image: "/images/products/mining/drilling-accessories.png",
+        description: "Peralatan evakuasi batang atau mata bor yang tertinggal/patah di dalam lubang bor.",
+        features: [
+          "Pilihan Taper Tap (pancing dalam) dan Box Tap (pancing luar)",
+          "Baja paduan khusus dengan alur ulir potong ekstra keras",
+          "Menyelamatkan rangkaian drill string yang terjepit",
+          "Tersedia berbagai ukuran ulir standar R/T series",
+        ],
+      },
+    ],
   },
 
-  // ==================== 2. CCTV & SECURITY (Single-Brand & Multi-Brand Products) ====================
+  // ==================== 2. CCTV & SECURITY ====================
   {
     name: "Hikvision CCTV System",
     category: "cctv",
@@ -563,7 +773,7 @@ const productEntries: ProductInput[] = [
     ],
   },
 
-  // ==================== 3. ELECTRICAL & INDUSTRIAL (Non-Branded / Engineering Standards) ====================
+  // ==================== 3. ELECTRICAL & INDUSTRIAL ====================
   {
     name: "UPS & Battery Backup",
     category: "electrical",
@@ -572,6 +782,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Online Double Conversion (Zero Transfer Time)", "Pure Sine Wave Output (Daya Bersih)", "Pilihan 1 kVA hingga 40 kVA 3-Phase", "Dukungan Hot-Swappable Battery & SNMP Card"],
     standards: ["IEC 62040 UPS Standards", "CE / RoHS Compliant"],
     images: representativeVisual("electrical", "ups-battery-backup.png", "UPS & Battery Backup"),
+    variants: [
+      {
+        code: "Online UPS 1kVA - 3kVA",
+        name: "Single Phase Online Double Conversion UPS (Tower / Rackmount)",
+        categoryTag: "UPS 1-Phase • Zero Transfer",
+        badge: "1kVA - 3kVA",
+        image: "/images/products/electrical/ups-battery-backup.png",
+        description: "UPS online proteksi tinggi untuk server rack, peralatan CCTV, dan sistem telekomunikasi site tanpa jeda transfer daya.",
+        features: [
+          "Daya output Power Factor 0.9 - 1.0 (True Sine Wave)",
+          "Layar LCD status real-time voltase, beban, dan baterai",
+          "Slot SNMP card untuk remote monitoring jaringan",
+          "Proteksi lonjakan tegangan (Surge Protection) 600 Joule",
+        ],
+      },
+      {
+        code: "Industrial UPS 10kVA - 40kVA",
+        name: "3-Phase Industrial High-Capacity Online UPS",
+        categoryTag: "UPS 3-Phase • Industrial",
+        badge: "10kVA - 40kVA",
+        image: "/images/products/electrical/ups-battery-backup.png",
+        description: "Sistem UPS 3-fase kapasitas besar dengan kabinet baterai eksternal (VRLA/Lithium) untuk backup daya ruang kontrol dan SCADA.",
+        features: [
+          "Konfigurasi input/output 3-Phase 380V/400V",
+          "Efisiensi tinggi hingga 96% dalam mode online",
+          "Dukungan paralel redundansi N+X hingga 4 unit",
+          "Enclosure berinsulasi debu dan ventilasi pintar",
+        ],
+      },
+    ],
   },
   {
     name: "Lampu Tambang LED",
@@ -581,6 +821,36 @@ const productEntries: ProductInput[] = [
     highlights: ["High Lumen Output 130 - 150 lm/W", "Proteksi IP66 & IK08 Tahan Getaran", "Die-Cast Aluminium Housing", "Surge Protection 10kV / 15kV"],
     standards: ["IEC 60598 Luminaire Standards", "IP66 / IK08", "CE / SNI"],
     images: representativeVisual("electrical", "mining-led.png", "Lampu Tambang LED"),
+    variants: [
+      {
+        code: "LED Bay 100W - 150W",
+        name: "Industrial High-Bay LED Luminaire IP66",
+        categoryTag: "Workshop LED • High Bay",
+        badge: "100W - 150W",
+        image: "/images/products/electrical/mining-led.png",
+        description: "Lampu LED gantung efisiensi tinggi untuk workshop perawatan alat berat, gudang suku cadang, dan crushing plant.",
+        features: [
+          "Efikasi cahaya tinggi 140 lm/Watt (hingga 21.000 Lumen)",
+          "Housing aluminium sirip pendingin ekstra tebal",
+          "Proteksi IP66 tahan semprotan air cuci dan debu batubara",
+          "Driver Meanwell / Philips dengan proteksi surge 10kV",
+        ],
+      },
+      {
+        code: "LED Linear 50W - 80W",
+        name: "Heavy-Duty Weatherproof LED Batten / Linear",
+        categoryTag: "Conveyor LED • Linear",
+        badge: "50W - 80W",
+        image: "/images/products/electrical/mining-led.png",
+        description: "Lampu LED memanjang untuk lorong conveyor belt, walkway jembatan timbang, dan area pompa tambang.",
+        features: [
+          "Bodi polikarbonat tahan benturan IK08 & klip stainless steel",
+          "Penyebaran cahaya merata tanpa silau (anti-glare diffuser)",
+          "Instalasi mudah dengan bracket gantung atau tempel",
+          "Tahan korosi asam air tambang dan kelembapan 100%",
+        ],
+      },
+    ],
   },
   {
     name: "Flood Light",
@@ -590,6 +860,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Pilihan 400W hingga 1000W / 1200W", "Lensa Optik Asimetris & Simetris", "Daya Sorot Jarak Jauh >200 Meter", "IP66 Housing Aluminium Anti-Karat"],
     standards: ["High Mast Area Lighting", "IP66 / IK09 Heavy Duty"],
     images: representativeVisual("electrical", "flood-light.png", "Flood Light"),
+    variants: [
+      {
+        code: "Floodlight 400W - 600W",
+        name: "High-Power LED Floodlight for Stockpile & Yard",
+        categoryTag: "Area Lighting • 400W - 600W",
+        badge: "400W - 600W",
+        image: "/images/products/electrical/flood-light.png",
+        description: "Lampu sorot jarak menengah-jauh untuk stockpile, dermaga jetty, dan pos keamanan tambang.",
+        features: [
+          "Output pencahayaan hingga 84.000 Lumen (140 lm/W)",
+          "Lensa kaca tempered 5mm dengan sudut asimetris",
+          "Bracket putar 360° dengan pengunci sudut akurat",
+          "Proteksi petir/surge arrester 15kV terpasang",
+        ],
+      },
+      {
+        code: "High Mast 1000W - 1200W",
+        name: "Ultra High-Power Stadium & Pit Floodlight (1000W+)",
+        categoryTag: "High Mast • 1000W+",
+        badge: "High Mast",
+        image: "/images/products/electrical/flood-light.png",
+        description: "Lampu sorot tiang tinggi (High Mast 25-40m) untuk menerangi seluruh area operasional open pit tambang di malam hari.",
+        features: [
+          "Daya sorot ekstrem > 160.000 Lumen dengan jangkauan 300m+",
+          "Desain modular multi-panel untuk kemudahan servis",
+          "Tahan terpaan angin badai hingga kecepatan 60 m/s",
+          "Indeks reproduksi warna CRI > 80 untuk visibilitas jelas",
+        ],
+      },
+    ],
   },
   {
     name: "Explosion Proof Lighting",
@@ -599,6 +899,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Sertifikasi Internasional ATEX & IECEx", "Zone 1, Zone 2 (Gas) & Zone 21, Zone 22 (Dust)", "Rating Proteksi Ex d IIC T6 Gb / Ex tb IIIC T80°C", "Kaca Tempered Tahan Benturan & IP66"],
     standards: ["ATEX Directive 2014/34/EU", "IECEx Certified", "Ex d IIC T6", "IP66"],
     images: representativeVisual("electrical", "explosion-proof.png", "Explosion Proof Lighting"),
+    variants: [
+      {
+        code: "Ex-Proof Floodlight 100W - 200W",
+        name: "ATEX / IECEx Zone 1/2 Ex-Proof LED Floodlight",
+        categoryTag: "Hazardous Area • Zone 1/2",
+        badge: "ATEX Zone 1/2",
+        image: "/images/products/electrical/explosion-proof.png",
+        description: "Lampu sorot tahan ledakan untuk tangki bahan bakar (Fuel Farm), ruang kompresor gas, dan silo tambang.",
+        features: [
+          "Sertifikasi Ex d IIC T6 Gb dan Ex tb IIIC T80°C Db",
+          "Housing aluminium copper-free berlapis epoxy anti-korosi",
+          "Kaca tempered tahan ledakan tekanan tinggi internal",
+          "Rating proteksi lingkungan IP66 & IK10",
+        ],
+      },
+      {
+        code: "Ex-Proof Linear Batten",
+        name: "ATEX / IECEx Zone 2/22 Dust Ignition Proof Linear",
+        categoryTag: "Hazardous Area • Linear",
+        badge: "Dust Proof Ex",
+        image: "/images/products/electrical/explosion-proof.png",
+        description: "Lampu memanjang anti-ledak untuk area penanganan debu batubara (Coal Handling) dan ruang baterai UPS.",
+        features: [
+          "Sertifikasi Ex nR IIC T6 Gc / Ex tc IIIC T80°C Dc",
+          "Mencegah percikan listrik memicu ledakan debu mudah terbakar",
+          "Dapat dipasang modul emergency backup baterai otomatis",
+          "Entry kabel standar gland M20 / NPT 3/4\"",
+        ],
+      },
+    ],
   },
   {
     name: "Panel & Aksesoris Electrical",
@@ -608,6 +938,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Main Distribution Panel (MDB) & Sub Distribution Panel (SDP)", "Komponen Breaker Standard Industri", "Enclosure Plat 2.0mm Powder Coated IP55/IP65", "Gland Kabel Ex-Proof & Aksesoris Terminasi"],
     standards: ["IEC 61439 Low-Voltage Switchgear", "IP55 / IP65 Enclosure", "PUIL 2020"],
     images: representativeVisual("electrical", "panel-electrical.png", "Panel & Aksesoris Electrical"),
+    variants: [
+      {
+        code: "MDB / SDP Distribution",
+        name: "Low Voltage Main & Sub Distribution Switchboard Panel",
+        categoryTag: "Power Distribution Panel",
+        badge: "MDB / SDP",
+        image: "/images/products/electrical/panel-electrical.png",
+        description: "Panel distribusi daya utama tegangan rendah dengan proteksi pemutus sirkuit ACB/MCCB untuk menyuplai fasilitas tambang.",
+        features: [
+          "Kapasitas arus 250A hingga 3200A tegangan 380V/400V 3-Phase",
+          "Enclosure plat baja 2.0mm finishing powder coating RAL 7035",
+          "Busbar tembaga murni (Copper 99.9%) elektroplating",
+          "Dilengkapi Digital Power Meter & Over/Under Voltage Relay",
+        ],
+      },
+      {
+        code: "MCC Starter Panel",
+        name: "Motor Control Center (DOL, Star-Delta, Soft Starter, VFD)",
+        categoryTag: "Motor Control Center",
+        badge: "MCC Panel",
+        image: "/images/products/electrical/panel-electrical.png",
+        description: "Panel kontrol motor listrik untuk penggerak pompa tambang, conveyor belt, crusher motor, dan blower ventilasi.",
+        features: [
+          "Mendukung motor listrik 5.5 kW hingga 315 kW+",
+          "Pilihan starter Direct-On-Line, Star-Delta, Soft Starter, atau VFD",
+          "Proteksi Thermal Overload, Phase Loss, dan Short Circuit",
+          "Dapat diintegrasikan dengan sistem SCADA / PLC site",
+        ],
+      },
+    ],
   },
   {
     name: "Networking Equipment",
@@ -617,9 +977,39 @@ const productEntries: ProductInput[] = [
     highlights: ["Industrial DIN-Rail Ethernet Switches", "Fiber Optic Industrial Transceivers", "Outdoor Long-Range Wireless Bridge 5GHz", "Suhu Operasi Ekstrem -40°C hingga +75°C"],
     standards: ["IEEE 802.3 Ethernet Standards", "IEC 61850-3 Substation", "IP30 / IP67"],
     images: representativeVisual("electrical", "networking-equipment.png", "Networking Equipment"),
+    variants: [
+      {
+        code: "Industrial Ethernet Switch",
+        name: "Hardened DIN-Rail 8-Port / 16-Port Industrial Switch",
+        categoryTag: "Industrial Network • Switch",
+        badge: "DIN-Rail Switch",
+        image: "/images/products/electrical/networking-equipment.png",
+        description: "Switch jaringan tanpa kipas dengan bodi logam padat tahan interferensi elektromagnetik dan suhu kerja -40°C s/d 75°C.",
+        features: [
+          "Pilihan 8 port / 16 port Gigabit dengan opsi Fiber SFP Uplink",
+          "Mendukung Power over Ethernet (PoE+ 30W per port) untuk CCTV",
+          "Dual power input redundan DC 12-48V dengan alarm relai",
+          "Housing logam kokoh IP30 mounting DIN-Rail standar",
+        ],
+      },
+      {
+        code: "Outdoor Wireless Bridge 5GHz",
+        name: "Long-Range Outdoor Wireless PTP / PTMP Bridge (5 GHz)",
+        categoryTag: "Wireless Bridge • Long Range",
+        badge: "Wireless 5GHz",
+        image: "/images/products/electrical/networking-equipment.png",
+        description: "Perangkat transmisi nirkabel jarak jauh untuk mengirimkan video CCTV dan data telemetri dari area pit ke kantor induk.",
+        features: [
+          "Jangkauan transmisi data 5 km hingga 20 km (Line-of-Sight)",
+          "Kecepatan throughput tinggi hingga 450+ Mbps (802.11ac)",
+          "Antena directional gain tinggi 23 - 27 dBi",
+          "Enclosure tahan cuaca ekstrem IP67 dan proteksi petir",
+        ],
+      },
+    ],
   },
 
-  // ==================== 4. FASTENERS & HARDWARE (Non-Branded / Engineering Standards) ====================
+  // ==================== 4. FASTENERS & HARDWARE ====================
   {
     name: "Hex Bolt",
     category: "fasteners",
@@ -628,6 +1018,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Standar DIN 931 (Setengah Ulir) & DIN 933 (Ulir Penuh)", "Grade Kekuatan 8.8, 10.9, dan 12.9", "Diameter Metrik M6 hingga M64+", "Finishing Black Oxide, Zinc Plated, Hot-Dip Galvanized"],
     standards: ["DIN 931 / DIN 933", "ISO 4014 / ISO 4017", "Grade 8.8 / 10.9 / 12.9"],
     images: representativeVisual("fasteners", "hex-bolt.png", "Hex Bolt"),
+    variants: [
+      {
+        code: "DIN 933 Grade 8.8 / 10.9",
+        name: "High Tensile Hexagon Bolt Full Thread (DIN 933 / ISO 4017)",
+        categoryTag: "Hex Bolt • Full Thread",
+        badge: "Grade 8.8 / 10.9",
+        image: "/images/products/fasteners/hex-bolt.png",
+        description: "Baut kepala segi enam ulir penuh baja karbon paduan untuk penyambungan struktur dan mesin bertekanan kerja tinggi.",
+        features: [
+          "Diameter M6 hingga M48 (Panjang 12mm s/d 300mm)",
+          "Kekuatan tarik 800 MPa (Gr 8.8) hingga 1040 MPa (Gr 10.9)",
+          "Finishing: Black Oxide, Yellow Zinc, Hot-Dip Galvanized",
+          "Disertai Mill Test Certificate 3.1 sesuai standar ISO",
+        ],
+      },
+      {
+        code: "DIN 931 Grade 10.9 / 12.9",
+        name: "High Tensile Hexagon Bolt Half Thread (DIN 931 / ISO 4014)",
+        categoryTag: "Hex Bolt • Half Thread",
+        badge: "Grade 10.9 / 12.9",
+        image: "/images/products/fasteners/hex-bolt.png",
+        description: "Baut setengah ulir berkekuatan geser tinggi (shear strength) untuk sambungan rangka baja jembatan dan sasis alat berat.",
+        features: [
+          "Diameter M10 hingga M64+ (Panjang hingga 400mm+)",
+          "Bagian unthreaded shank menahan gaya geser sambungan secara maksimal",
+          "Grade 12.9 kekuatan tarik ekstrem hingga 1220 MPa",
+          "Ulir metrik presisi class 6g anti-karat",
+        ],
+      },
+    ],
   },
   {
     name: "Anchor Bolt",
@@ -637,6 +1057,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Standar ASTM F1554 (Grade 36, Grade 55, Grade 105)", "Bentuk L-Type, J-Type, dan Straight Anchor with Plate", 'Diameter M12 hingga M64 (1/2" s/d 2-1/2")', "Finishing Hot-Dip Galvanized (ASTM A153) & Plain"],
     standards: ["ASTM F1554 Grade 36/55/105", "ASTM A153 Galvanizing"],
     images: representativeVisual("fasteners", "anchor-bolt.png", "Anchor Bolt"),
+    variants: [
+      {
+        code: "ASTM F1554 L-Type",
+        name: "L-Hook Foundation Anchor Bolt (Grade 36 / Grade 55)",
+        categoryTag: "Anchor Bolt • L-Type",
+        badge: "ASTM F1554",
+        image: "/images/products/fasteners/anchor-bolt.png",
+        description: "Angkur bentuk kait L untuk pengikatan kolom struktur baja dan tower lampu ke fondasi beton bertulang.",
+        features: [
+          'Diameter M12 hingga M64 (1/2" s/d 2-1/2")',
+          "Panjang total dan panjang kait (hook length) sesuai gambar teknik",
+          "Finishing Hot-Dip Galvanized standar ASTM A153 anti-karat",
+          "Dilengkapi 1 atau 2 mur berat (heavy hex nut) + plat ring",
+        ],
+      },
+      {
+        code: "Straight Anchor with Plate",
+        name: "Straight Anchor Rod with Bottom Anchor Plate (Grade 55 / 105)",
+        categoryTag: "Anchor Bolt • Plate Type",
+        badge: "Heavy Anchor",
+        image: "/images/products/fasteners/anchor-bolt.png",
+        description: "Angkur batang lurus dengan pelat jangkar baja tebal di dasar untuk fondasi mesin vibrasi berat (crusher, ball mill).",
+        features: [
+          "Baja paduan ASTM F1554 Grade 105 berkekuatan tarik tinggi 724-896 MPa",
+          "Plat jangkar bawah dilas atau dikunci ganda dengan mur",
+          "Mencegah gaya cabut (pull-out force) pada getaran dinamis",
+          "Disertakan sleeve proteksi untuk toleransi ekspansi beton",
+        ],
+      },
+    ],
   },
   {
     name: "Stud Bolt",
@@ -646,6 +1096,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Standar ASTM A193 Grade B7 & ASTM A194 Grade 2H", "Aplikasi Flange Tekanan Tinggi ASME B16.5", 'Ukuran 1/2" hingga 3-1/2" (UNC / 8-UN Thread)', "Pilihan Coating PTFE / Xylan 1424, Hot-Dip Galvanized, Cadmium"],
     standards: ["ASTM A193 Grade B7", "ASTM A194 Grade 2H", "ASME B16.5 / B18.2.2"],
     images: representativeVisual("fasteners", "stud-bolt.png", "Stud Bolt"),
+    variants: [
+      {
+        code: "ASTM A193 B7 + 2H",
+        name: "All-Thread Stud Bolt ASTM A193 B7 with 2x A194 2H Heavy Hex Nuts",
+        categoryTag: "Stud Bolt • Pressure Flange",
+        badge: "ASTM A193 B7",
+        image: "/images/products/fasteners/stud-bolt.png",
+        description: "Stud bolt standar perpipaan migas, uap boiler, dan slurry tambang untuk flange tekanan tinggi ANSI Class 150 - 2500.",
+        features: [
+          'Diameter 1/2" hingga 3-1/2" dengan ulir UNC / 8-UN standar ASME',
+          "Material baja kromium-molibdenum perlakuan panas quenching & tempering",
+          "Dipasangkan 2 mur tebal ASTM A194 Grade 2H",
+          "Finishing: Plain Oiled, Black Oxide, Hot-Dip Galvanized",
+        ],
+      },
+      {
+        code: "B7 PTFE / Xylan Coated",
+        name: "Fluoropolymer / PTFE Xylan 1424 Coated Stud Bolt",
+        categoryTag: "Coated Stud Bolt • Marine Grade",
+        badge: "Xylan 1424",
+        image: "/images/products/fasteners/stud-bolt.png",
+        description: "Stud bolt berlapis PTFE (Teflon / Xylan Blue 1424) untuk ketahanan korosi asam kimia tambang dan air laut ekstrem hingga >1000 jam salt spray.",
+        features: [
+          "Lapisan pelindung fluoropolymer warna biru/hijau anti-korosi",
+          "Koefisien gesek rendah mempermudah pengencangan torsi (Torquing)",
+          "Mencegah mur macet saat pelepasan berkala pemeliharaan pipa",
+          "Tahan temperatur operasi dari -40°C hingga +260°C",
+        ],
+      },
+    ],
   },
   {
     name: "Stainless Fastener",
@@ -655,6 +1135,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Material AISI 304 (A2-70) & AISI 316 (A4-80)", "Tahan Korosi Asam Tambang & Air Laut", "Baut Hexagon, Baut L (Socket Cap), dan Threaded Rod", "Standar DIN 933, DIN 912, DIN 934, DIN 125"],
     standards: ["ISO 3506-1 (A2-70 / A4-80)", "AISI 304 / 316", "DIN 933 / DIN 912"],
     images: representativeVisual("fasteners", "stainless-fastener.png", "Stainless Fastener"),
+    variants: [
+      {
+        code: "SUS 304 (A2-70)",
+        name: "Stainless Steel 304 Hex Bolt, Nut & Socket Head Cap Screws",
+        categoryTag: "Stainless Steel • SUS 304",
+        badge: "SUS 304 / A2-70",
+        image: "/images/products/fasteners/stainless-fastener.png",
+        description: "Baut stainless steel serbaguna tahan karat untuk instalasi outdoor, pos sekuriti, dan struktur komersial.",
+        features: [
+          "Baja tahan karat austenitik SUS 304 / A2-70 (Kekuatan tarik 700 MPa)",
+          "Tahan kelembapan tinggi, air tawar, dan cuaca hujan tropis",
+          "Tersedia baut hex DIN 933, baut L socket DIN 912, dan as drat",
+          "Non-magnetik dan tampilan kilap bersih",
+        ],
+      },
+      {
+        code: "SUS 316 (A4-80)",
+        name: "Marine Grade Stainless Steel 316 Fasteners (Molybdenum Alloy)",
+        categoryTag: "Marine Grade • SUS 316",
+        badge: "SUS 316 / A4-80",
+        image: "/images/products/fasteners/stainless-fastener.png",
+        description: "Baut stainless steel dengan paduan molibdenum untuk area jetty pelabuhan batubara, pengolahan kimia, dan asam tambang.",
+        features: [
+          "Baja tahan karat SUS 316 / A4-80 (Kekuatan tarik 800 MPa)",
+          "Ketahanan superior terhadap korosi klorida, air laut, dan uap kimia",
+          "Mencegah korosi lubang (pitting corrosion)",
+          "Standar pengujian mutu material lengkap",
+        ],
+      },
+    ],
   },
   {
     name: "Nut & Washer",
@@ -664,6 +1174,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Heavy Hex Nut ASTM A194 Grade 2H & DIN 934 Grade 8/10", "Structural Hardened Flat Washer ASTM F436 & DIN 6916", "Nord-Lock Wedge Locking Washers (Anti-Vibration)", "Spring Washer DIN 127B & Disc Springs DIN 2093"],
     standards: ["ASTM A194 / DIN 934", "ASTM F436 / DIN 6916", "Nord-Lock Wedge System"],
     images: representativeVisual("fasteners", "nut-washer.png", "Nut & Washer"),
+    variants: [
+      {
+        code: "Heavy Hex Nut & Washer",
+        name: "ASTM A194 2H Heavy Hex Nut & ASTM F436 Hardened Washer",
+        categoryTag: "Nut & Washer • Structural",
+        badge: "A194 2H / F436",
+        image: "/images/products/fasteners/nut-washer.png",
+        description: "Mur tebal dan ring baja keras untuk mendistribusikan beban kencang sambungan baut struktural tanpa merusak permukaan material.",
+        features: [
+          'Diameter M12 hingga M64 (1/2" s/d 2-1/2")',
+          "Ketebalan mur heavy hex menahan beban ulir tinggi tanpa stripping",
+          "Ring F436 dikeraskan melalui heat-treatment untuk meratakan tegangan",
+          "Pilihan coating HDG, Black Oxide, dan Cadmium",
+        ],
+      },
+      {
+        code: "Nord-Lock Washers",
+        name: "Nord-Lock Wedge-Locking Washer Pair (Anti-Vibration)",
+        categoryTag: "Locking Washer • Anti-Vibration",
+        badge: "Nord-Lock System",
+        image: "/images/products/fasteners/nut-washer.png",
+        description: "Sepasang ring pengunci bersirip baji (cam angle) yang mengunci baut menggunakan tegangan baji alih-alih gesekan, mencegah baut lepas akibat getaran mesin.",
+        features: [
+          "Mencegah baut kendor 100% pada mesin bergetar (crusher, screen, genset)",
+          "Dapat digunakan kembali (reusable) tanpa kehilangan performa kunci",
+          "Pilihan material Carbon Steel (Delta Protekt) & Stainless Steel 316",
+          "Kinerja teruji standar Junker Vibration Test DIN 65151",
+        ],
+      },
+    ],
   },
   {
     name: "High Tensile Bolt",
@@ -673,6 +1213,36 @@ const productEntries: ProductInput[] = [
     highlights: ["Standar ASTM A325 & ASTM A490 Heavy Hex Structural Bolts", "Standar DIN 6914 / EN 14399 High-Strength Structural Bolting (HV)", "Kekuatan Tarik hingga 150 ksi (1035 MPa)", "Sertifikasi Pengujian Lengkap (Mill Test Certificate)"],
     standards: ["ASTM A325 / ASTM A490", "DIN 6914 / EN 14399-4", "AISC Structural Bolting"],
     images: representativeVisual("fasteners", "high-tensile-bolt.png", "High Tensile Bolt"),
+    variants: [
+      {
+        code: "ASTM A325 / A490",
+        name: "Heavy Hex Structural Bolt ASTM A325 & ASTM A490 (Type 1)",
+        categoryTag: "Structural Bolt • ASTM A325",
+        badge: "ASTM A325",
+        image: "/images/products/fasteners/high-tensile-bolt.png",
+        description: "Baut kepala segi enam tebal standar struktural AISC untuk konstruksi rangka gedung pabrik, conveyor trestle, dan jembatan.",
+        features: [
+          'Diameter 1/2" hingga 1-1/2" (Panjang 1-1/2" s/d 12")',
+          "Kekuatan tarik minimum 120 ksi (825 MPa) untuk Grade A325",
+          "Disertai 1 Heavy Hex Nut ASTM A563 DH + Ring F436",
+          "Finishing Hot-Dip Galvanized ASTM A153 untuk proteksi korosi luar ruangan",
+        ],
+      },
+      {
+        code: "EN 14399 / DIN 6914",
+        name: "High-Strength Structural Bolting Assembly (HV Sets Grade 10.9)",
+        categoryTag: "Structural Bolt • Grade 10.9",
+        badge: "EN 14399 HV",
+        image: "/images/products/fasteners/high-tensile-bolt.png",
+        description: "Set baut struktural Eropa (Baut + Mur + 2 Ring) Grade 10.9 untuk sambungan momen rangka baja berat bertekanan tinggi.",
+        features: [
+          "Baut DIN 6914 Gr 10.9 + Mur DIN 6915 Gr 10 + 2 Ring DIN 6916",
+          "Kekuatan tarik tinggi 1000 - 1200 MPa",
+          "Karakteristik torsi dan preload baut presisi terkalibrasi",
+          "Lulus uji k factor dan uji beban tarik langsung",
+        ],
+      },
+    ],
   },
 ];
 
