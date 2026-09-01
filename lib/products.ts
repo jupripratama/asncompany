@@ -10,6 +10,7 @@ export type ProductImage = {
 export type ProductVariant = {
   code: string;
   name: string;
+  brand?: string;
   categoryTag?: string;
   badge?: string;
   image?: string;
@@ -125,7 +126,7 @@ const productEntries: ProductInput[] = [
     images: representativeVisual("mining", "drilling-accessories.png", "Aksesoris Drilling Equipment"),
   },
 
-  // ==================== 2. CCTV & SECURITY (Branded Products with Verified Models) ====================
+  // ==================== 2. CCTV & SECURITY (Single-Brand & Multi-Brand Products) ====================
   {
     name: "Hikvision CCTV System",
     category: "cctv",
@@ -138,6 +139,7 @@ const productEntries: ProductInput[] = [
       {
         code: "DS-2CD1043G2-LIU(F)",
         name: "4 MP Smart Hybrid Light Fixed Bullet Network Camera",
+        brand: "Hikvision",
         categoryTag: "IP Camera • Bullet",
         badge: "Hikvision Value",
         image: "/images/brands/hikvision-products/ds-2cd1043g2-liu.png",
@@ -153,6 +155,7 @@ const productEntries: ProductInput[] = [
       {
         code: "DS-2CD2387G2P-LSU/SL",
         name: "8 MP Panoramic ColorVu Fixed Turret Network Camera",
+        brand: "Hikvision",
         categoryTag: "IP Camera • Panoramic Turret",
         badge: "Hikvision Pro",
         image: "/images/brands/hikvision-products/ds-2cd2387g2p-lsu-sl.png",
@@ -168,6 +171,7 @@ const productEntries: ProductInput[] = [
       {
         code: "DS-2CD2087G2H-LIU",
         name: "8 MP Smart Hybrid Light with ColorVu Fixed Mini Bullet",
+        brand: "Hikvision",
         categoryTag: "IP Camera • Mini Bullet",
         badge: "Hikvision 4K",
         image: "/images/brands/hikvision-products/ds-2cd2087g2h-liu.png",
@@ -194,6 +198,7 @@ const productEntries: ProductInput[] = [
       {
         code: "DH-IPC-HFW2431T-ZS-S2",
         name: "4 MP WDR IR Vari-focal Bullet Network Camera",
+        brand: "Dahua",
         categoryTag: "IP Camera • Bullet",
         badge: "Dahua WizSense",
         image: "/images/brands/dahua-products/dh-ipc-hfw2431t-zs-s2.png",
@@ -209,6 +214,7 @@ const productEntries: ProductInput[] = [
       {
         code: "DH-IPC-HDW3849H-AS-PV",
         name: "8 MP Full-Color Active Deterrence Fixed Turret (TiOC)",
+        brand: "Dahua",
         categoryTag: "IP Camera • Turret 4K",
         badge: "Dahua TiOC",
         image: "/images/brands/dahua-products/dh-ipc-hdw3849h-as-pv.png",
@@ -224,6 +230,7 @@ const productEntries: ProductInput[] = [
       {
         code: "DH-SD49425XB-HNR",
         name: "4 MP 25x Starlight IR PTZ Network Camera",
+        brand: "Dahua",
         categoryTag: "Speed Dome PTZ Camera",
         badge: "Dahua PTZ",
         image: "/images/brands/dahua-products/dh-sd49425xb-hnr.png",
@@ -250,6 +257,7 @@ const productEntries: ProductInput[] = [
       {
         code: "IPC2324SB-DZK-I0",
         name: "4 MP LightHunter Motorized Varifocal Bullet Camera",
+        brand: "Uniview",
         categoryTag: "IP Camera • Prime Bullet",
         badge: "UNV LightHunter",
         image: "/images/brands/uniview-products/ipc2324sb-dzk-i0.png",
@@ -265,6 +273,7 @@ const productEntries: ProductInput[] = [
       {
         code: "IPC3618SB-ADF28KM-I0",
         name: "8 MP Tri-Guard Active Deterrence Fixed Turret Camera",
+        brand: "Uniview",
         categoryTag: "IP Camera • Tri-Guard 4K",
         badge: "UNV Tri-Guard",
         image: "/images/brands/uniview-products/ipc3618sb-adf28km-i0.png",
@@ -280,6 +289,7 @@ const productEntries: ProductInput[] = [
       {
         code: "NVR302-16S-P16",
         name: "16-Channel 2-SATA 16-PoE 4K Network Video Recorder",
+        brand: "Uniview",
         categoryTag: "NVR • Built-in 16 PoE",
         badge: "UNV NVR",
         image: "/images/brands/uniview-products/nvr302-16s-p16.png",
@@ -306,6 +316,7 @@ const productEntries: ProductInput[] = [
       {
         code: "AXIS P1468-LE",
         name: "4K / 8 MP Heavy-Duty Bullet Network Camera",
+        brand: "Axis",
         categoryTag: "Enterprise IP Camera • Bullet",
         badge: "Axis P-Series",
         image: "/images/brands/axis-products/axis-p1468-le.png",
@@ -321,6 +332,7 @@ const productEntries: ProductInput[] = [
       {
         code: "AXIS M3088-V",
         name: "8 MP Compact Fixed Mini Dome Network Camera",
+        brand: "Axis",
         categoryTag: "Indoor Mini Dome • 4K",
         badge: "Axis M-Series",
         image: "/images/brands/axis-products/axis-m3088-v.png",
@@ -347,6 +359,7 @@ const productEntries: ProductInput[] = [
       {
         code: "HC30WB4R2",
         name: "Honeywell 30 Series 4 MP WDR IR Rugged Bullet",
+        brand: "Honeywell",
         categoryTag: "Industrial Rugged Bullet",
         badge: "Honeywell 30 Series",
         image: "/images/brands/honeywell-products/hc30wb4r2.png",
@@ -369,6 +382,56 @@ const productEntries: ProductInput[] = [
     highlights: ["Pilihan 16, 32, hingga 64 Channel 4K", "Dukungan RAID 0/1/5/10 untuk keamanan data", "Dual Gigabit LAN Redundancy", "Kompresi H.265+ & Ultra 265"],
     brands: [...cctvBrands],
     images: representativeVisual("cctv", "nvr-system.png", "NVR System"),
+    variants: [
+      {
+        code: "DS-7616NXI-K2",
+        name: "Hikvision 16-Channel 1U AcuSense 4K NVR",
+        brand: "Hikvision",
+        categoryTag: "NVR • Hikvision",
+        badge: "Hikvision Pro",
+        image: "/images/brands/hikvision-products/ds-7616nxi-k2.png",
+        description: "Perekam video 16 channel 4K dengan AcuSense AI pengenalan target manusia & kendaraan, mendukung 2 HDD SATA hingga 20TB.",
+        features: [
+          "16-ch input IP kamera hingga resolusi 12 MP / 4K",
+          "Dekoding hingga 2-ch@12 MP atau 8-ch@1080p",
+          "2 Slot SATA HDD (kapasitas hingga 10TB per disk)",
+          "AcuSense analitik cerdas dan smart search rekaman",
+        ],
+        officialUrl: "https://www.hikvision.com/en/products/IP-Products/Network-Video-Recorders/Pro-Series/ds-7616nxi-k2/",
+      },
+      {
+        code: "DHI-NVR4216-4KS2/I",
+        name: "Dahua 16-Channel 1U WizSense 4K Network Video Recorder",
+        brand: "Dahua",
+        categoryTag: "NVR • Dahua",
+        badge: "Dahua WizSense",
+        image: "/images/brands/dahua-products/dhi-nvr4216-4ks2-i.png",
+        description: "Perekam video 16 channel dengan WizSense AI, perlindungan perimeter, dan pengenalan wajah real-time.",
+        features: [
+          "16 Channel IP video access dengan bandwidth 256 Mbps",
+          "Mendukung kamera AI WizSense dan pengenalan wajah",
+          "2 Slot HDD SATA hingga 10TB per harddisk",
+          "Output independen HDMI 4K dan VGA",
+        ],
+        officialUrl: "https://www.dahuasecurity.com/products/All-Products/Network-Recorders/WizSense-Series/NVR4-I-Series/2-HDDs/NVR4216-4KS2/I",
+      },
+      {
+        code: "NVR302-16S-P16",
+        name: "Uniview 16-Channel 16-PoE Plug & Play 4K NVR",
+        brand: "Uniview",
+        categoryTag: "NVR • Uniview",
+        badge: "UNV Prime",
+        image: "/images/brands/uniview-products/nvr302-16s-p16.png",
+        description: "NVR 16 channel dengan 16 port PoE bawaan untuk instalasi cepat kamera IP tanpa switch tambahan.",
+        features: [
+          "16 Port PoE independen dengan fitur Long Range 250m",
+          "Mendukung kamera 4K Ultra HD & format Ultra 265",
+          "2 Slot HDD SATA kapasitas total 16TB",
+          "Dukungan cloud upgrade dan monitoring EZView",
+        ],
+        officialUrl: "https://global.uniview.com/Products/NVR/Prime/NVR302-16S-P16/",
+      },
+    ],
   },
   {
     name: "DVR System",
@@ -378,6 +441,40 @@ const productEntries: ProductInput[] = [
     highlights: ["8, 16, dan 32 Channel Hybrid HD", "Mendukung resolusi kamera analog hingga 4K/5MP", "Kompresi H.265 Pro+", "Analitik AcuSense pada saluran analog"],
     brands: ["Hikvision", "Dahua", "Honeywell"],
     images: representativeVisual("cctv", "dvr-system.png", "DVR System"),
+    variants: [
+      {
+        code: "iDS-7216HQHI-M2/S",
+        name: "Hikvision 16-Channel 1080p 1U AcuSense Turbo HD DVR",
+        brand: "Hikvision",
+        categoryTag: "DVR • Hikvision",
+        badge: "Hikvision Turbo HD",
+        image: "/images/brands/hikvision-products/ids-7216hqhi-m2-s.png",
+        description: "DVR hybrid 16 channel dengan teknologi AcuSense AI motion detection, mendukung kamera HDTVI/AHD/CVI/CVBS dan IP camera.",
+        features: [
+          "16 Channel BNC video input + 2 Channel IP kamera",
+          "AcuSense Deep Learning Motion Detection 2.0 di semua channel",
+          "Kompresi efisien H.265 Pro+ hemat storage hingga 75%",
+          "2 Slot HDD SATA kapasitas hingga 10TB per disk",
+        ],
+        officialUrl: "https://www.hikvision.com/en/products/Turbo-HD-Products/DVR/AcuSense-Series/ids-7216hqhi-m2-s/",
+      },
+      {
+        code: "DH-XVR5216AN-4KL-I3",
+        name: "Dahua 16-Channel 4K-N WizSense Penta-brid XVR",
+        brand: "Dahua",
+        categoryTag: "DVR • Dahua",
+        badge: "Dahua WizSense",
+        image: "/images/products/cctv/dvr-system.png",
+        description: "Perekam video penta-brid 16 channel dengan resolusi hingga 4K, SMD Plus, dan proteksi perimeter cerdas.",
+        features: [
+          "16 Channel HDCVI/AHD/TVI/CVBS input + 16 IP kamera",
+          "SMD Plus untuk deteksi akurat manusia dan kendaraan",
+          "Mendukung audio over coaxial pada semua channel",
+          "2 Slot HDD SATA kapasitas total hingga 32TB",
+        ],
+        officialUrl: "https://www.dahuasecurity.com/products/All-Products/Digital-Video-Recorders/WizSense-Series/XVR5-I3-Series/2-HDDs/XVR5216AN-4KL-I3",
+      },
+    ],
   },
   {
     name: "Access Control System",
@@ -387,6 +484,40 @@ const productEntries: ProductInput[] = [
     highlights: ["Biometric Face Recognition AI (Anti-Spoofing)", "Fingerprint & RFID Smart Card Reader", "Heavy-Duty Magnetic Lock 600/1200 lbs", "Integrasi Time Attendance & CCTV"],
     brands: [...cctvBrands],
     images: representativeVisual("cctv", "access-control.png", "Access Control System"),
+    variants: [
+      {
+        code: "DS-K1T341AMF",
+        name: "Hikvision Value Series Face & Fingerprint Terminal",
+        brand: "Hikvision",
+        categoryTag: "Access Control • Hikvision",
+        badge: "Hikvision Biometric",
+        image: "/images/products/cctv/access-control.png",
+        description: "Terminal akses kontrol biometrik dengan layar sentuh 4.3 inci, kamera ganda 2 MP, pembaca sidik jari, dan kartu Mifare.",
+        features: [
+          "Kapasitas 1.500 wajah, 1.500 sidik jari, dan 1.500 kartu",
+          "Waktu pengenalan wajah kilat < 0.2 detik per orang",
+          "Anti-spoofing wajah mencegah kecurangan foto/video",
+          "Mendukung koneksi TCP/IP, Wi-Fi, dan ISAPI",
+        ],
+        officialUrl: "https://www.hikvision.com/en/products/Access-Control-Products/Face-Recognition-Terminals/Value-Series/ds-k1t341amf/",
+      },
+      {
+        code: "ASI7213X-T1",
+        name: "Dahua Thermal & Face Recognition Access Terminal",
+        brand: "Dahua",
+        categoryTag: "Access Control • Dahua",
+        badge: "Dahua Biometric",
+        image: "/images/products/cctv/access-control.png",
+        description: "Terminal akses mandiri dengan layar 7 inci IPS, pengenalan wajah AI jarak jauh 0.3 - 2.0 meter, dan akurasi 99.5%.",
+        features: [
+          "Kapasitas 100.000 wajah, 100.000 kartu, dan 100.000 password",
+          "Kamera ganda 2 MP WDR dengan sensor inframerah",
+          "Mendukung interkom audio dua arah dan protokol ONVIF",
+          "Enclosure tahan air IP65 untuk pos gerbang luar",
+        ],
+        officialUrl: "https://www.dahuasecurity.com/products/All-Products/Access-Control/Stand-alone-Terminals/Face-Recognition-Terminals/ASI7213X-T1",
+      },
+    ],
   },
   {
     name: "Monitoring System",
@@ -396,6 +527,40 @@ const productEntries: ProductInput[] = [
     highlights: ['Monitor CCTV Industrial Grade 24/7 (32" - 55")', "Video Wall Controller & Decoder", "VMS Client & Storage Server", "Panel IPS Anti-Glare Bezel Tipis"],
     brands: [...cctvBrands],
     images: representativeVisual("cctv", "monitoring-system.png", "Monitoring System"),
+    variants: [
+      {
+        code: "DS-D5032FC-A",
+        name: 'Hikvision 32" FHD Industrial Surveillance Monitor',
+        brand: "Hikvision",
+        categoryTag: "Display • Hikvision",
+        badge: "Hikvision 24/7",
+        image: "/images/products/cctv/monitoring-system.png",
+        description: 'Monitor profesional 32 inci dirancang khusus untuk operasi 24 jam nonstop tanpa degradasi warna di ruang kontrol.',
+        features: [
+          'Panel LED Backlight 31.5" Full HD (1920 × 1080)',
+          "Sudut pandang lebar 178°/178° dengan pemrosesan 3D comb filter",
+          "Input lengkap: HDMI, VGA, BNC In, BNC Out, Audio",
+          "Komponen industrial grade dengan MTBF > 50.000 jam",
+        ],
+        officialUrl: "https://www.hikvision.com/en/products/Display-and-Control/Monitors/Commercial-Displays/ds-d5032fc-a/",
+      },
+      {
+        code: "DHL32-F600",
+        name: 'Dahua 32" FHD Commercial Surveillance Monitor',
+        brand: "Dahua",
+        categoryTag: "Display • Dahua",
+        badge: "Dahua 24/7",
+        image: "/images/products/cctv/monitoring-system.png",
+        description: 'Monitor pengawasan komersial 32 inci dengan bezel tipis, reduksi noise digital, dan konsumsi daya hemat untuk ruang sekuriti.',
+        features: [
+          'Resolusi Full HD 1920 × 1080 dengan kontras tinggi 1200:1',
+          "Desain termal profesional untuk pemakaian terus-menerus 24/7",
+          "Speaker internal terpasang dan input HDMI/VGA",
+          "Bodi logam kokoh dengan mounting standar VESA",
+        ],
+        officialUrl: "https://www.dahuasecurity.com/products/All-Products/Display--Control/Monitors/Surveillance-Monitors/DHL32-F600",
+      },
+    ],
   },
 
   // ==================== 3. ELECTRICAL & INDUSTRIAL (Non-Branded / Engineering Standards) ====================

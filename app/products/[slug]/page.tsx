@@ -123,40 +123,49 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   const CategoryIcon = detail.icon;
   const isBranded = Boolean(product.variants && product.variants.length > 0);
 
-  // ==================== MODE 1: BRANDED PRODUCT (EXACT HIKVISION LAYOUT) ====================
+  // ==================== MODE 1: BRANDED / MULTI-BRAND PRODUCT (EXACT HIKVISION LAYOUT) ====================
   if (isBranded && product.variants) {
-    const brandName = product.brands?.[0] || product.name;
+    const brandLabel = product.brands?.length === 1 ? "Merek tersedia" : "Pilihan Multi-Brand";
     const variants = product.variants;
 
     return (
       <main>
-        {/* 1. Hero Dark Gradient (Exact Hikvision Style) */}
+        {/* 1. Hero Dark Gradient (Exact Hikvision Style with Brand / Multi-Brand Badge) */}
         <section className="relative overflow-hidden border-b border-slate-700 bg-[#07111f] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(6,182,212,0.22),transparent_30%),linear-gradient(120deg,transparent_40%,rgba(15,23,42,0.5))]" />
           <div className="site-container relative py-10 sm:py-14 lg:py-18">
             <Link href={backLink.href} className="inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition hover:text-white">
               <ArrowLeft className="size-4" /> {backLink.label}
             </Link>
-            <div className="mt-9 grid gap-8 lg:grid-cols-[1fr_20rem] lg:items-end">
+            <div className="mt-9 grid gap-8 lg:grid-cols-[1fr_22rem] lg:items-end">
               <div>
                 <span className="inline-flex rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-[10px] font-black tracking-[0.16em] text-cyan-200 uppercase">
-                  Merek tersedia
+                  {brandLabel}
                 </span>
                 <h1 className="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-6xl">{product.name}</h1>
                 <p className="mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg">
                   {product.description}
                 </p>
               </div>
-              <div className="rounded-3xl border border-white/15 bg-white p-7 shadow-2xl shadow-black/25">
-                {product.brands && product.brands.length > 0 ? (
-                  <BrandMark brand={brandName} />
+              <div className="rounded-3xl border border-white/15 bg-white p-6 shadow-2xl shadow-black/25">
+                {product.brands && product.brands.length === 1 ? (
+                  <BrandMark brand={product.brands[0]} />
+                ) : product.brands && product.brands.length > 1 ? (
+                  <div>
+                    <p className="mb-2 text-[10px] font-black tracking-wider text-slate-500 uppercase">Merek Utama Tersedia</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {product.brands.map((brand) => (
+                        <BrandMark key={brand} brand={brand} compact />
+                      ))}
+                    </div>
+                  </div>
                 ) : (
                   <div className="text-center font-black text-slate-900">{product.name}</div>
                 )}
-                <div className="mt-4 flex items-start gap-3 rounded-2xl bg-slate-100 p-4 text-slate-700">
-                  <ShieldCheck className="mt-0.5 size-5 shrink-0 text-cyan-700" />
+                <div className="mt-4 flex items-start gap-3 rounded-2xl bg-slate-100 p-3.5 text-slate-700">
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-cyan-700" />
                   <p className="text-xs leading-5">
-                    Merek yang dapat kami adakan. Ketersediaan model dan ketentuan garansi dikonfirmasi dalam penawaran.
+                    Produk resmi yang dapat kami adakan. Garansi dan ketersediaan unit dikonfirmasi dalam penawaran.
                   </p>
                 </div>
               </div>
@@ -165,24 +174,25 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         </section>
 
         {/* 2. Sub-Category / Tags Pill Bar */}
-        <section className="border-b border-slate-200 bg-white py-7 dark:border-slate-700 dark:bg-[#0d1a2c]" aria-label="Kategori sistem">
-          <div className="site-container flex flex-wrap gap-2">
+        <section className="border-b border-slate-200 bg-white py-6 dark:border-slate-700 dark:bg-[#0d1a2c]" aria-label="Kategori sistem">
+          <div className="site-container flex flex-wrap items-center gap-2">
+            <span className="mr-2 text-xs font-bold text-slate-500 dark:text-slate-400">Pilihan Sistem:</span>
             {product.highlights.map((highlight) => (
-              <span key={highlight} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200">
+              <span key={highlight} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-bold text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200">
                 {highlight}
               </span>
             ))}
           </div>
         </section>
 
-        {/* 3. Verified Models Grid (3 Columns with Real Image & Official Link) */}
+        {/* 3. Verified Models Grid (3 Columns with Brand Logo & Real Image & Official Link) */}
         <section className="site-container py-14 sm:py-20" aria-labelledby="models-heading">
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
               <p className="eyebrow">Pilihan model terverifikasi</p>
-              <h2 id="models-heading" className="section-title mt-2">Kamera {brandName} untuk kebutuhan proyek</h2>
+              <h2 id="models-heading" className="section-title mt-2">Pilihan {product.name} untuk kebutuhan proyek</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-                Model berikut menjadi titik awal konsultasi. Jika part number yang Anda cari belum tampil, kirimkan kode atau spesifikasinya melalui RFQ.
+                Model berikut menjadi titik awal konsultasi. Jika part number atau brand spesifik yang Anda cari belum tampil, kirimkan spesifikasinya melalui RFQ.
               </p>
             </div>
             <span className="rounded-full bg-cyan-500/10 px-4 py-2 text-xs font-black text-cyan-700 dark:text-cyan-300">
@@ -194,7 +204,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             {variants.map((variant) => {
               const variantImg = variant.image || product.images[0].src;
               return (
-                <article key={variant.code} className="surface-card flex h-full flex-col overflow-hidden !p-0">
+                <article key={variant.code} className="surface-card flex h-full flex-col overflow-hidden !p-0 transition hover:border-cyan-500/50 hover:shadow-lg">
                   <div className="relative aspect-[4/3] border-b border-slate-200 bg-white p-5 dark:border-slate-700">
                     <Image
                       src={variantImg}
@@ -203,12 +213,24 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                       sizes="(min-width: 1024px) 33vw, 100vw"
                       className="object-contain p-5 transition duration-500 hover:scale-[1.025]"
                     />
-                    <span className="absolute top-4 right-4 rounded-full bg-slate-950/85 px-3 py-1.5 text-[9px] font-black tracking-wide text-white uppercase">
-                      {variant.categoryTag || variant.badge || product.categoryLabel}
-                    </span>
+                    <div className="absolute top-4 right-4 flex items-center gap-1.5">
+                      {variant.brand && (
+                        <span className="rounded-md bg-white/95 px-2 py-1 text-[10px] font-black tracking-wider text-slate-900 shadow-sm uppercase border border-slate-200">
+                          {variant.brand}
+                        </span>
+                      )}
+                      <span className="rounded-md bg-slate-950/85 px-2 py-1 text-[9px] font-black tracking-wide text-white uppercase">
+                        {variant.categoryTag || variant.badge || product.categoryLabel}
+                      </span>
+                    </div>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="font-mono text-xs font-bold text-cyan-700 dark:text-cyan-300">{variant.code}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-mono text-xs font-bold text-cyan-700 dark:text-cyan-300">{variant.code}</p>
+                      {variant.brand && (
+                        <span className="text-[10px] font-bold text-slate-400">By {variant.brand}</span>
+                      )}
+                    </div>
                     <h3 className="mt-2 text-lg font-black leading-6 text-slate-950 dark:text-white">{variant.name}</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{variant.description}</p>
                     <ul className="mt-5 flex-1 space-y-2">
