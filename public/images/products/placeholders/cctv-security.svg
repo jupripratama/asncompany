@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Visual kategori CCTV dan Security</title>
+  <desc id="desc">Ilustrasi kamera pengawas industrial</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071426"/><stop offset="1" stop-color="#0e3b4c"/></linearGradient></defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <circle cx="905" cy="360" r="300" fill="#06b6d4" opacity=".09"/>
+  <g transform="translate(310 190)">
+    <path d="M86 65h515c48 0 87 39 87 87v150H140c-77 0-140-63-140-140v-11C0 104 38 65 86 65Z" fill="#f8fafc"/>
+    <path d="M60 302h548l-66 88H148Z" fill="#cbd5e1"/>
+    <circle cx="170" cy="186" r="98" fill="#0f172a"/>
+    <circle cx="170" cy="186" r="61" fill="#0891b2"/>
+    <circle cx="170" cy="186" r="28" fill="#020617"/>
+    <circle cx="145" cy="160" r="10" fill="#fff" opacity=".8"/>
+    <path d="M590 390v95h-180" fill="none" stroke="#94a3b8" stroke-width="34" stroke-linecap="round"/>
+  </g>
+  <text x="68" y="92" fill="#67e8f9" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="5">ASN SECURITY SYSTEMS</text>
+  <text x="68" y="135" fill="#fff" font-family="Arial, sans-serif" font-size="20" opacity=".72">Visual kategori • tipe kamera menyesuaikan spesifikasi site</text>
+</svg>

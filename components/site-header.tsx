@@ -36,7 +36,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-sm font-medium text-slate-600 transition hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-400",
+                    "text-sm font-medium text-slate-600 transition hover:text-cyan-600 dark:text-slate-200 dark:hover:text-cyan-300",
                     active && "font-bold text-cyan-600 dark:text-cyan-400",
                   )}
                 >

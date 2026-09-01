@@ -17,7 +17,7 @@ export const company = {
 
 export const navigation = [
   { href: "/", label: "Beranda" },
-  { href: "/solutions", label: "Solusi" },
+  { href: "/solutions", label: "Layanan" },
   { href: "/products", label: "Produk" },
   { href: "/about", label: "Tentang Kami" },
   { href: "/contact", label: "Kontak" },

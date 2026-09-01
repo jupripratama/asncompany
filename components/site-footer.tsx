@@ -9,17 +9,17 @@ export function SiteFooter() {
       <div className="site-container grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4 lg:col-span-2">
           <BrandLogo />
-          <p className="max-w-lg text-sm leading-6 text-slate-600 dark:text-slate-400">{company.description}</p>
+          <p className="max-w-lg text-sm leading-6 text-slate-600 dark:text-slate-300">{company.description}</p>
         </div>
         <div>
           <h2 className="footer-heading">Halaman</h2>
-          <ul className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+          <ul className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
             {navigation.map((item) => <li key={item.href}><Link href={item.href} className="hover:text-cyan-600">{item.label}</Link></li>)}
           </ul>
         </div>
         <div>
           <h2 className="footer-heading">Kontak</h2>
-          <ul className="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+          <ul className="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-300">
             <li className="flex gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0 text-cyan-500" />
               <span>

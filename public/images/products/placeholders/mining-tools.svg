@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Visual kategori Mining Tools</title>
+  <desc id="desc">Ilustrasi teknis alat pengeboran pertambangan</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071426"/>
+      <stop offset="1" stop-color="#12314b"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8b76a"/>
+      <stop offset=".5" stop-color="#b7792c"/>
+      <stop offset="1" stop-color="#f3d7a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <circle cx="960" cy="80" r="280" fill="#06b6d4" opacity=".08"/>
+  <path d="M0 620 260 470l225 93 220-150 495 177v160H0Z" fill="#020617" opacity=".62"/>
+  <g transform="translate(435 135)">
+    <path d="M165 0h150l55 118-38 278-92 94-92-94-38-278Z" fill="url(#metal)"/>
+    <path d="M110 118h260M133 225h214M148 330h184" stroke="#6b3f16" stroke-width="18" stroke-linecap="round" opacity=".55"/>
+    <g fill="#fff1d2">
+      <circle cx="145" cy="80" r="18"/><circle cx="200" cy="55" r="18"/><circle cx="260" cy="55" r="18"/><circle cx="315" cy="80" r="18"/>
+      <circle cx="170" cy="160" r="16"/><circle cx="230" cy="145" r="16"/><circle cx="290" cy="160" r="16"/>
+    </g>
+    <path d="M177 490h126v118H177z" fill="#cbd5e1"/>
+    <path d="M177 512h126M177 540h126M177 568h126" stroke="#64748b" stroke-width="8"/>
+  </g>
+  <text x="68" y="92" fill="#67e8f9" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="5">ASN INDUSTRIAL SUPPLY</text>
+  <text x="68" y="135" fill="#fff" font-family="Arial, sans-serif" font-size="20" opacity=".72">Visual kategori • foto produk dapat disesuaikan saat RFQ</text>
+</svg>

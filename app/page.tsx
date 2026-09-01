@@ -34,7 +34,13 @@ const services = [
   },
 ];
 
-const supportedBrands = ["HIKVISION", "DAHUA", "UNIVIEW", "AXIS", "HONEYWELL"];
+const supportedBrands = [
+  { name: "Hikvision", logo: "/images/brands/hikvision.svg" },
+  { name: "Dahua", logo: "/images/brands/dahua.svg" },
+  { name: "Uniview", logo: "/images/brands/uniview.png" },
+  { name: "Axis", logo: "/images/brands/axis.svg" },
+  { name: "Honeywell", logo: "/images/brands/honeywell.svg" },
+];
 
 const advantages = ["Produk dan brand fleksibel", "Harga kompetitif", "Dukungan teknis responsif", "Pengiriman tepat waktu"];
 
@@ -61,14 +67,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-slate-200 bg-white py-6 dark:border-slate-800 dark:bg-slate-900">
+      <section className="border-b border-slate-200 bg-white py-6 dark:border-slate-700 dark:bg-[#0b1628]">
         <div className="site-container">
-          <p className="mb-4 text-center text-xs font-semibold tracking-widest text-slate-400 uppercase">
+          <p className="mb-4 text-center text-xs font-semibold tracking-widest text-slate-400 uppercase dark:text-slate-300">
             Dukungan Multi-Brand Terkemuka untuk Sistem Keamanan & Industri
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 opacity-80 sm:gap-x-12">
+          <div className="grid grid-cols-2 items-center justify-center gap-4 sm:grid-cols-3 lg:mx-auto lg:max-w-5xl lg:grid-cols-5 lg:gap-5">
             {supportedBrands.map((brand) => (
-              <span key={brand} className="text-base font-bold text-slate-700 sm:text-lg dark:text-slate-300">{brand}</span>
+              <div key={brand.name} className="flex min-h-16 min-w-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white px-3 py-3 shadow-sm dark:border-slate-600 dark:shadow-black/25">
+                <Image
+                  src={brand.logo}
+                  alt={`Logo ${brand.name}`}
+                  width={200}
+                  height={64}
+                  className="max-h-8 w-full max-w-[150px] object-contain"
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -96,7 +110,7 @@ export default function HomePage() {
                   <service.icon className="size-6" />
                 </span>
                 <h3 className="mt-4 text-lg font-bold text-slate-950 dark:text-white">{service.title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">{service.description}</p>
+                <p className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-300">{service.description}</p>
               </div>
               <Link href={service.href} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-cyan-600 hover:underline">
                 Pelajari Selengkapnya →
@@ -106,7 +120,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-900/30">
+      <section className="border-y border-slate-200 bg-white py-20 dark:border-slate-700 dark:bg-[#0d1a2c]">
         <div className="site-container grid items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="eyebrow">Mengapa ASN</p>
@@ -125,7 +139,7 @@ export default function HomePage() {
       </section>
 
       <section className="site-container py-20">
-        <div className="overflow-hidden rounded-[2rem] bg-slate-950 px-6 py-12 text-center text-white sm:px-12">
+        <div className="rfq-panel rounded-[2rem] px-6 py-12 text-center text-white sm:px-12">
           <p className="eyebrow !text-cyan-300">Request for Quotation</p>
           <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-black tracking-tight sm:text-4xl">Sampaikan kebutuhan Anda, kami bantu menyiapkan penawarannya.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-slate-300">Kirim RFQ melalui WhatsApp atau email dengan spesifikasi, jumlah, dan target waktu pengadaan.</p>
