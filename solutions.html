@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solusi Pengadaan Industri & Pertambangan - CV Agape Sinar Nirwana (ASN)</title>
+  <meta name="description" content="Solusi lengkap pengadaan mining tools, sistem CCTV keamanan, kelistrikan industri, dan fasteners berkekuatan tinggi dari CV Agape Sinar Nirwana.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#00A3C4',
+              hover: '#0891B2',
+              light: '#E0F7FA',
+              dark: '#0A748A'
+            },
+            industrial: {
+              950: '#070E1A',
+              900: '#0B192C',
+              800: '#1E293B',
+              700: '#334155',
+              600: '#475569',
+              100: '#F1F5F9',
+              50: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-industrial-50 text-slate-900 dark:bg-industrial-950 dark:text-slate-100 transition-colors duration-200 antialiased selection:bg-brand selection:text-white">
+
+  <!-- TOP BAR -->
+  <div class="bg-industrial-900 text-slate-300 text-xs py-2 px-4 border-b border-industrial-800 hidden sm:block">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <span class="flex items-center gap-2 font-medium text-slate-200">
+          <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+          CV AGAPE SINAR NIRWANA (ASN)
+        </span>
+        <span class="text-slate-500">|</span>
+        <span class="text-slate-300">General Supplier & Mining Support Solutions</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <span class="text-slate-400">Senin - Jumat: 08.00 - 17.00 WIB</span>
+        <a href="mailto:sales@agapesinarnirwana.com" class="hover:text-brand transition-colors">sales@agapesinarnirwana.com</a>
+        <a href="https://wa.me/628123456789" target="_blank" class="text-emerald-400 font-semibold hover:underline">Hotline: +62 812-3456-7890</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-50 w-full border-b bg-white/95 dark:bg-industrial-900/95 glass-nav border-slate-200 dark:border-industrial-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 sm:h-20 items-center justify-between gap-4">
+        
+        <a href="index.html" class="flex shrink-0 items-center transition-opacity hover:opacity-90">
+          <img src="images/ASN-removebg-preview.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 sm:h-12 w-auto object-contain dark:hidden">
+          <img src="images/ASN-removebg-preview-dark.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 sm:h-12 w-auto object-contain hidden dark:block">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="index.html">Beranda</a>
+          <a class="text-brand font-bold" href="solutions.html">Solusi</a>
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="products.html">Produk</a>
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="about.html">Tentang Kami</a>
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="contact.html">Kontak</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" class="p-2 rounded-lg text-slate-500 hover:text-industrial-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-industrial-800 transition-colors" title="Ubah Tema">
+            <svg id="themeIconSun" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="themeIconMoon" class="w-5 h-5 block dark:hidden text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <div class="hidden sm:block">
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all text-white bg-brand hover:bg-brand-hover h-9 sm:h-10 px-5 text-sm shadow-sm shadow-brand/30 transform hover:-translate-y-0.5">
+              <span>Konsultasi & RFQ</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+          <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-industrial-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden lg:hidden px-4 pt-2 pb-6 bg-white dark:bg-industrial-900 border-b border-slate-200 dark:border-industrial-800 space-y-3">
+      <a href="index.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Beranda</a>
+      <a href="solutions.html" class="block py-2 text-sm font-bold text-brand">Solusi</a>
+      <a href="products.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Produk</a>
+      <a href="about.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Tentang Kami</a>
+      <a href="contact.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Kontak</a>
+      <div class="pt-2">
+        <a href="contact.html" class="block w-full py-2.5 rounded-full text-center text-sm font-semibold text-white bg-brand shadow-md">
+          Minta Penawaran (RFQ)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SOLUTIONS HERO BANNER (Taurus Pattern) -->
+  <section class="relative w-full border-b border-industrial-800 overflow-hidden bg-industrial-950 text-white">
+    <div class="absolute inset-0 z-0">
+      <img src="images/hero.jpg" alt="Industrial Mining Machinery ASN" class="w-full h-full object-cover object-center brightness-[0.35]">
+      <div class="absolute inset-0 bg-gradient-to-t from-industrial-950 via-industrial-950/80 to-industrial-950/60"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
+      <div class="mx-auto max-w-3xl text-center space-y-4">
+        <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+          Solusi Pengadaan untuk Setiap Kebutuhan Industri
+        </h1>
+        <p class="mt-4 text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-normal">
+          Solusi pengadaan komprehensif yang dirancang untuk menjamin efisiensi, keamanan, dan kehandalan operasional di sektor pertambangan dan industri berat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 SIGNATURE SOLUTION CARDS (Persis Model taurus.co.id/solutions) -->
+  <section class="w-full py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+
+        <!-- CARD 1: MINING TOOLS (PDF Hal 4) -->
+        <div id="mining" class="scroll-mt-24">
+          <div class="bg-white dark:bg-industrial-900 text-slate-900 dark:text-slate-100 flex flex-col rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-industrial-800 hover:border-brand transition-all hover:shadow-xl group h-full justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-900">
+                <img src="images/hero.jpg" alt="Mining Tools" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                  <span class="px-3 py-1 rounded-full bg-brand text-white text-xs font-bold uppercase tracking-wider">
+                    Mining Tools
+                  </span>
+                  <span class="text-xs text-slate-300 font-medium">PDF Halaman 4</span>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-brand">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-bold text-industrial-900 dark:text-white">Mining Tools & Drilling</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Peralatan Pemboran Batuan Keras</p>
+                  </div>
+                </div>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                  Solusi lengkap perlengkapan pemboran lubang ledak (*blast hole*), eksplorasi, dan quarry tambang dengan tungsten carbide berdaya tahan tinggi.
+                </p>
+
+                <ul class="space-y-3 mb-6">
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Drill Bit:</strong> Button bit, Retrac bit, Cross bit dengan ketahanan aus ekstrem</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Drill Rod:</strong> MF rod, Speed rod, Extension rod perlakuan panas karburisasi</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Shank Adapter & Coupling Sleeve:</strong> Presisi transmisi energi torsi hidrolik</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>DTH Hammer:</strong> Down-The-Hole Hammer efisiensi penetrasi maksimal</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Reaming Tools & Aksesoris:</strong> Pilot adapter, stabilizer, thread grease</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+              <a href="contact.html?cat=Mining%20Tools" class="w-full py-3 rounded-full font-semibold text-sm text-white bg-brand hover:bg-brand-hover flex items-center justify-center gap-2 shadow-sm transition-all">
+                <span>Minta Penawaran Mining Tools</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: CCTV & SECURITY (PDF Hal 5) -->
+        <div id="cctv" class="scroll-mt-24">
+          <div class="bg-white dark:bg-industrial-900 text-slate-900 dark:text-slate-100 flex flex-col rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-industrial-800 hover:border-brand transition-all hover:shadow-xl group h-full justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-900">
+                <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" alt="CCTV Security" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                  <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider">
+                    CCTV & Security
+                  </span>
+                  <span class="text-xs text-slate-300 font-medium">PDF Halaman 5</span>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-bold text-industrial-900 dark:text-white">CCTV & Security Systems</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Penyediaan Sistem CCTV Multi-Brand</p>
+                  </div>
+                </div>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                  Penyediaan kamera CCTV industri tahan cuaca ekstrem, perekam NVR/DVR berkapasitas besar, dan software monitoring sentral.
+                </p>
+
+                <ul class="space-y-3 mb-6">
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Multi-Brand Partner:</strong> Hikvision, Dahua, Uniview, Axis, Honeywell</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>NVR & DVR System:</strong> 16/32/64/128 Channel Enterprise, RAID failover</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Access Control:</strong> Face recognition, RFID turnstile, barrier gate tambang</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Monitoring System:</strong> Software command center pemantauan multi-pit</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Ruggedized Specs:</strong> IP67/IK10 tahan debu tambang pekat & petir</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+              <a href="contact.html?cat=CCTV%20%26%20Security" class="w-full py-3 rounded-full font-semibold text-sm text-white bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2 shadow-sm transition-all">
+                <span>Minta Penawaran CCTV & Security</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: ELECTRICAL & INDUSTRIAL (PDF Hal 6) -->
+        <div id="electrical" class="scroll-mt-24">
+          <div class="bg-white dark:bg-industrial-900 text-slate-900 dark:text-slate-100 flex flex-col rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-industrial-800 hover:border-brand transition-all hover:shadow-xl group h-full justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-900">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Electrical Solutions" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                  <span class="px-3 py-1 rounded-full bg-amber-500 text-white text-xs font-bold uppercase tracking-wider">
+                    Electrical & Industrial
+                  </span>
+                  <span class="text-xs text-slate-300 font-medium">PDF Halaman 6</span>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-bold text-industrial-900 dark:text-white">Electrical & Industrial</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Power Backup, Lighting & Networking</p>
+                  </div>
+                </div>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                  Perlindungan sistem daya dari downtime, lampu tambang berkekuatan tinggi, dan perangkat elektrikal bersertifikasi tahan ledakan.
+                </p>
+
+                <ul class="space-y-3 mb-6">
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>UPS & Battery Backup:</strong> Kapasitas 1 kVA hingga 200+ kVA online double-conversion</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Lampu Tambang LED & Flood Light:</strong> Daya 100W – 1000W ultra-bright anti vibrasi</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Explosion Proof Lighting:</strong> Sertifikasi resmi ATEX / IECEx area hazardous zone 1 & 2</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Panel & Aksesoris Electrical:</strong> Komponen MCCB, kontaktor, cable gland industri</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Networking Equipment:</strong> Switch industri tahan cuaca ekstrem dan fiber optic</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+              <a href="contact.html?cat=Electrical%20%26%20Industrial" class="w-full py-3 rounded-full font-semibold text-sm text-white bg-amber-600 hover:bg-amber-700 flex items-center justify-center gap-2 shadow-sm transition-all">
+                <span>Minta Penawaran Electrical</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: FASTENERS & HARDWARE (PDF Hal 7) -->
+        <div id="fasteners" class="scroll-mt-24">
+          <div class="bg-white dark:bg-industrial-900 text-slate-900 dark:text-slate-100 flex flex-col rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-industrial-800 hover:border-brand transition-all hover:shadow-xl group h-full justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-900">
+                <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Fasteners" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                  <span class="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">
+                    Fasteners & Hardware
+                  </span>
+                  <span class="text-xs text-slate-300 font-medium">PDF Halaman 7</span>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-bold text-industrial-900 dark:text-white">Fasteners & Hardware</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Baut Mutu Tinggi & Angkur Fondasi</p>
+                  </div>
+                </div>
+
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                  Pengadaan sambungan mekanikal berkekuatan tarik tinggi, baut stud flange perpipaan, dan angkur fondasi mesin berat.
+                </p>
+
+                <ul class="space-y-3 mb-6">
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Hex Bolt:</strong> Grade 8.8, 10.9, 12.9, ASTM A325 structural</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Anchor Bolt:</strong> Tipe L-Bolt dan J-Bolt fondasi mesin pabrik</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Stud Bolt:</strong> ASTM A193 B7 / A194 2H dengan 2 Heavy Hex Nut</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Stainless Fastener:</strong> SUS 304 & SUS 316 tahan korosi asam tambang</span>
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path></svg>
+                    <span><strong>Nut & Washer:</strong> Heavy Hex Nut, Spring Washer, Ring Plat HDG</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+              <a href="contact.html?cat=Fasteners%20%26%20Hardware" class="w-full py-3 rounded-full font-semibold text-sm text-white bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center gap-2 shadow-sm transition-all">
+                <span>Minta Penawaran Fasteners</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEKTOR INDUSTRI YANG DILAYANI (Taurus 8-Grid Pattern) -->
+  <section class="w-full py-16 sm:py-24 bg-slate-100/70 dark:bg-industrial-900 border-t border-slate-200 dark:border-industrial-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-industrial-900 dark:text-white">
+          Sektor Industri yang Kami Layani
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          Rantai pasok terpadu yang telah dipercaya lintas sektor industri strategis di Indonesia.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:grid-cols-4">
+        
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Pertambangan</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Batubara, nikel, tembaga, emas & quarry batuan keras.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Manufaktur & Pabrikasi</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Workshop alat berat, assembly plant, dan fasilitas pemrosesan.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Konstruksi & Sipil</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Pembangunan jembatan, struktur baja & pondasi bore pile.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Infrastruktur Publik</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Jalan tol, pelabuhan, bendungan, dan proyek nasional.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Minyak & Gas Bumi</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Flange piping studs, explosion proof lighting & UPS.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Pembangkit Listrik (Power)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">PLTU, PLTA, gardu induk, dan fasilitas transmisi.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"></path><path d="M6 18h12"></path><path d="M6 14h12"></path></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Pergudangan & Logistik</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Kamera pengawas CCTV, barcode turnstile & floodlight.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-white dark:bg-industrial-800/80 border border-slate-200 dark:border-industrial-700 shadow-xs hover:border-brand hover:shadow-md transition-all group">
+          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand/10 group-hover:bg-brand transition-colors mb-3">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path></svg>
+          </div>
+          <h3 class="text-sm sm:text-base font-bold text-industrial-900 dark:text-white mb-1">Komersial & Institusi</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">Gedung kantor, sistem absensi biometrik & elektrikal.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACTION BANNER -->
+  <section class="w-full py-16 sm:py-20 bg-brand/5 dark:bg-industrial-900/40 border-y border-brand/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-industrial-900 dark:text-white">
+        Siap Mengoptimalkan Pengadaan Kebutuhan Proyek Anda?
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Diskusikan kebutuhan teknis Anda bersama tim procurement kami dan dapatkan penawaran harga resmi (Quotation) secara cepat.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="contact.html" class="px-7 py-3 rounded-full text-sm font-semibold text-white bg-brand hover:bg-brand-hover shadow-md transition-all">
+          Kirim Formulir RFQ
+        </a>
+        <a href="https://wa.me/628123456789" target="_blank" class="px-7 py-3 rounded-full text-sm font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-all flex items-center gap-2">
+          Konsultasi WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-COLUMN FOOTER -->
+  <footer class="w-full border-t border-slate-200 dark:border-industrial-800 bg-white dark:bg-industrial-950 text-slate-600 dark:text-slate-400 text-xs py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-5 pb-10 border-b border-slate-200 dark:border-industrial-800">
+        
+        <div class="space-y-3 lg:col-span-2">
+          <a href="index.html" class="inline-block transition-opacity hover:opacity-90">
+            <img src="images/ASN-removebg-preview.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 w-auto object-contain dark:hidden">
+            <img src="images/ASN-removebg-preview-dark.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 w-auto object-contain hidden dark:block">
+          </a>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
+            General Supplier & Mining Support Solutions terpercaya di Indonesia. Menyediakan produk berkualitas dengan harga kompetitif untuk mendukung kelancaran operasional pelanggan.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-industrial-900 dark:text-white uppercase tracking-wider">Halaman</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-brand transition-colors">Beranda</a></li>
+            <li><a href="solutions.html" class="hover:text-brand transition-colors font-bold text-brand">Solusi Industri</a></li>
+            <li><a href="products.html" class="hover:text-brand transition-colors">Katalog Produk</a></li>
+            <li><a href="about.html" class="hover:text-brand transition-colors">Tentang Kami</a></li>
+            <li><a href="contact.html" class="hover:text-brand transition-colors">Kontak & RFQ</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-industrial-900 dark:text-white uppercase tracking-wider">Lini Solusi</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#mining" class="hover:text-brand transition-colors">Mining Tools</a></li>
+            <li><a href="#cctv" class="hover:text-brand transition-colors">CCTV Multi-Brand</a></li>
+            <li><a href="#electrical" class="hover:text-brand transition-colors">Electrical & UPS</a></li>
+            <li><a href="#fasteners" class="hover:text-brand transition-colors">Fasteners Hardware</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-industrial-900 dark:text-white uppercase tracking-wider">Kontak Resmi</h4>
+          <ul class="space-y-2 text-xs">
+            <li>Jl. Taruna Sari RT 63 No 17, Gunung Sari Ilir 76121, Balikpapan, Kalimantan Timur</li>
+            <li>sales@agapesinarnirwana.com</li>
+            <li>Hotline: +62 812-3456-7890</li>
+            <li>Senin - Jumat: 08.00 - 17.00</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-500">
+        <p>&copy; 2026 CV Agape Sinar Nirwana (ASN). Hak Cipta Dilindungi.</p>
+        <p>Taurus-Inspired Enterprise Solution Design Architecture.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

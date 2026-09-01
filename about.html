@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami - CV Agape Sinar Nirwana (ASN)</title>
+  <meta name="description" content="Profil perusahaan, visi, misi, dan keunggulan CV Agape Sinar Nirwana (ASN) sebagai mitra pengadaan terpercaya industri dan pertambangan di Indonesia.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#00A3C4',
+              hover: '#0891B2',
+              light: '#E0F7FA',
+              dark: '#0A748A'
+            },
+            industrial: {
+              950: '#070E1A',
+              900: '#0B192C',
+              800: '#1E293B',
+              700: '#334155',
+              600: '#475569',
+              100: '#F1F5F9',
+              50: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-industrial-50 text-slate-900 dark:bg-industrial-950 dark:text-slate-100 transition-colors duration-200 antialiased selection:bg-brand selection:text-white">
+
+  <!-- TOP BAR -->
+  <div class="bg-industrial-900 text-slate-300 text-xs py-2 px-4 border-b border-industrial-800 hidden sm:block">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <span class="flex items-center gap-2 font-medium text-slate-200">
+          <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+          CV AGAPE SINAR NIRWANA (ASN)
+        </span>
+        <span class="text-slate-500">|</span>
+        <span class="text-slate-300">Profil Perusahaan Resmi</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <span class="text-slate-400">Senin - Jumat: 08.00 - 17.00 WIB</span>
+        <a href="mailto:sales@agapesinarnirwana.com" class="hover:text-brand transition-colors">sales@agapesinarnirwana.com</a>
+        <a href="https://wa.me/628123456789" target="_blank" class="text-emerald-400 font-semibold hover:underline">Hotline: +62 812-3456-7890</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-50 w-full border-b bg-white/95 dark:bg-industrial-900/95 glass-nav border-slate-200 dark:border-industrial-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 sm:h-20 items-center justify-between gap-4">
+        
+        <a href="index.html" class="flex shrink-0 items-center transition-opacity hover:opacity-90">
+          <img src="images/ASN-removebg-preview.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 sm:h-12 w-auto object-contain dark:hidden">
+          <img src="images/ASN-removebg-preview-dark.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 sm:h-12 w-auto object-contain hidden dark:block">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="index.html">Beranda</a>
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="solutions.html">Solusi</a>
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="products.html">Produk</a>
+          <a class="text-brand font-bold" href="about.html">Tentang Kami</a>
+          <a class="text-slate-600 dark:text-slate-300 hover:text-brand transition-colors" href="contact.html">Kontak</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" class="p-2 rounded-lg text-slate-500 hover:text-industrial-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-industrial-800 transition-colors" title="Ubah Tema">
+            <svg id="themeIconSun" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="themeIconMoon" class="w-5 h-5 block dark:hidden text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <div class="hidden sm:block">
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all text-white bg-brand hover:bg-brand-hover h-9 sm:h-10 px-5 text-sm shadow-sm shadow-brand/30 transform hover:-translate-y-0.5">
+              <span>Konsultasi & RFQ</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+          <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-industrial-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden lg:hidden px-4 pt-2 pb-6 bg-white dark:bg-industrial-900 border-b border-slate-200 dark:border-industrial-800 space-y-3">
+      <a href="index.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Beranda</a>
+      <a href="solutions.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Solusi</a>
+      <a href="products.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Produk</a>
+      <a href="about.html" class="block py-2 text-sm font-bold text-brand">Tentang Kami</a>
+      <a href="contact.html" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200">Kontak</a>
+      <div class="pt-2">
+        <a href="contact.html" class="block w-full py-2.5 rounded-full text-center text-sm font-semibold text-white bg-brand shadow-md">
+          Minta Penawaran (RFQ)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION ABOUT -->
+  <section class="py-16 sm:py-24 bg-white dark:bg-industrial-900 border-b border-slate-200 dark:border-industrial-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="space-y-4 lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">
+            Profil Perusahaan
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-industrial-900 dark:text-white leading-tight">
+            CV Agape Sinar Nirwana (ASN)
+          </h1>
+          <p class="text-lg text-brand font-semibold">General Supplier & Mining Support Solutions</p>
+          <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed pt-2">
+            CV Agape Sinar Nirwana (ASN) adalah perusahaan yang bergerak di bidang <strong>General Supplier</strong> dengan fokus pada penyediaan kebutuhan <strong>industri, pertambangan, konstruksi, dan infrastruktur</strong>. Kami menyediakan produk berkualitas dengan harga kompetitif untuk mendukung kelancaran operasional pelanggan.
+          </p>
+          <div class="pt-4 flex flex-wrap items-center gap-3">
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all text-white bg-brand hover:bg-brand-hover h-10 px-5 text-sm shadow-sm shadow-brand/30">
+              <span>Konsultasi & RFQ</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <a href="products.html" class="inline-flex items-center justify-center gap-2 rounded-full font-medium border border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-industrial-800 text-slate-800 dark:text-white h-10 px-5 text-sm hover:border-brand">
+              Lihat Katalog Produk
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center items-center">
+          <div class="p-8 sm:p-10 rounded-3xl bg-slate-50 dark:bg-industrial-950 border border-slate-200 dark:border-industrial-800 flex items-center justify-center w-full max-w-md shadow-sm">
+            <img src="images/ASN-removebg-preview.png" alt="CV Agape Sinar Nirwana" class="h-28 sm:h-36 w-auto object-contain dark:hidden">
+            <img src="images/ASN-removebg-preview-dark.png" alt="CV Agape Sinar Nirwana" class="h-28 sm:h-36 w-auto object-contain hidden dark:block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISI & MISI (PDF Hal 3) -->
+  <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Visi Card -->
+      <div class="lg:col-span-5 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-industrial-900 via-industrial-950 to-slate-900 text-white relative overflow-hidden flex flex-col justify-between border border-industrial-800 shadow-xl">
+        <div class="relative z-10 space-y-5">
+          <div class="w-12 h-12 rounded-2xl bg-brand/20 border border-brand/40 flex items-center justify-center text-brand">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand">Visi Kami (PDF Hal 3)</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 leading-snug">
+              Menjadi mitra pengadaan terpercaya bagi industri Indonesia.
+            </h2>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Membangun rantai pasok material dan perlengkapan teknik yang terpercaya, berintegritas, dan mendukung kemajuan sektor industri nasional.
+          </p>
+        </div>
+      </div>
+
+      <!-- Misi 4 Pillars -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-6 rounded-2xl bg-white dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-brand/10 text-brand flex items-center justify-center font-bold text-sm mb-3">1</div>
+            <h3 class="font-bold text-base text-industrial-900 dark:text-white mb-1">Menyediakan Produk Berkualitas</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Memastikan setiap produk dan suku cadang yang disuplai memenuhi standar teknik tinggi dan bergaransi resmi.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-brand/10 text-brand flex items-center justify-center font-bold text-sm mb-3">2</div>
+            <h3 class="font-bold text-base text-industrial-900 dark:text-white mb-1">Layanan Cepat & Profesional</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Merespons setiap permintaan penawaran dan kebutuhan mendesak operasional site secara cepat dan akurat.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-brand/10 text-brand flex items-center justify-center font-bold text-sm mb-3">3</div>
+            <h3 class="font-bold text-base text-industrial-900 dark:text-white mb-1">Solusi Efisien & Ekonomis</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Menawarkan struktur harga kompetitif yang menekan total cost of ownership tanpa kompromi kualitas.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-brand/10 text-brand flex items-center justify-center font-bold text-sm mb-3">4</div>
+            <h3 class="font-bold text-base text-industrial-900 dark:text-white mb-1">Hubungan Jangka Panjang</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Membangun kemitraan strategis berlandaskan transparansi, integritas, dan konsistensi pelayanan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6 KEUNGGULAN ASN (PDF Hal 8) -->
+  <section class="py-16 sm:py-24 bg-industrial-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand">Keunggulan Layanan</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1">
+          6 Pilar Keunggulan ASN (PDF Hal 8)
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">Kekuatan kami dalam mendukung rantai pasok industri dan pertambangan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="p-6 rounded-2xl bg-industrial-800/80 border border-slate-700/70 hover:border-brand transition-all">
+          <div class="flex items-center gap-2 mb-2 text-emerald-400 font-bold text-base">
+            <span>✓</span>
+            <h3 class="text-white">Harga Kompetitif</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">Harga langsung dari principal dan distributor resmi untuk efisiensi anggaran pengadaan belanja operasional Anda.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-industrial-800/80 border border-slate-700/70 hover:border-brand transition-all">
+          <div class="flex items-center gap-2 mb-2 text-emerald-400 font-bold text-base">
+            <span>✓</span>
+            <h3 class="text-white">Produk Berkualitas</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">Standar uji mutu bersertifikasi, mill sheet material, dan garansi resmi pabrikan.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-industrial-800/80 border border-slate-700/70 hover:border-brand transition-all">
+          <div class="flex items-center gap-2 mb-2 text-emerald-400 font-bold text-base">
+            <span>✓</span>
+            <h3 class="text-white">Multi Brand Solution</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">Keluasan memilih merek terkemuka dunia sesuai preferensi teknis dan anggaran proyek Anda.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-industrial-800/80 border border-slate-700/70 hover:border-brand transition-all">
+          <div class="flex items-center gap-2 mb-2 text-emerald-400 font-bold text-base">
+            <span>✓</span>
+            <h3 class="text-white">Pengiriman Tepat Waktu</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">Koordinasi logistik darat, laut, dan udara untuk memastikan material tiba tepat waktu di remote site tambang.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-industrial-800/80 border border-slate-700/70 hover:border-brand transition-all">
+          <div class="flex items-center gap-2 mb-2 text-emerald-400 font-bold text-base">
+            <span>✓</span>
+            <h3 class="text-white">Dukungan Teknis Responsif</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">Bantuan pencocokan part number, kalkulasi teknis, dan pemilihan alat oleh tim teknis berdedikasi.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-industrial-800/80 border border-slate-700/70 hover:border-brand transition-all">
+          <div class="flex items-center gap-2 mb-2 text-emerald-400 font-bold text-base">
+            <span>✓</span>
+            <h3 class="text-white">Fleksibel Sesuai Kebutuhan</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">Menyesuaikan terms pengadaan dan jadwal pengiriman bertahap (staggered delivery) sesuai kondisi lapangan.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KOMITMEN PELAYANAN (PDF Hal 9) -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-industrial-950 border-b border-slate-200 dark:border-industrial-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">
+        Komitmen Pelayanan (PDF Hal 9)
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-industrial-900 dark:text-white">
+        Janji Layanan CV Agape Sinar Nirwana
+      </h2>
+      <blockquote class="text-base sm:text-xl font-medium text-slate-700 dark:text-slate-300 italic leading-relaxed">
+        “ASN berkomitmen menjadi mitra terpercaya dalam pengadaan barang untuk industri dan pertambangan dengan memberikan solusi yang <strong class="text-brand not-italic">cepat, tepat, dan bernilai tambah</strong> bagi pelanggan.”
+      </blockquote>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 max-w-xl mx-auto text-left">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800">
+          <div class="text-brand font-bold text-base">CEPAT</div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Respons penawaran dalam 24 jam & logistik sigap.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800">
+          <div class="text-industrial-900 dark:text-white font-bold text-base">TEPAT</div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Kesesuaian part number dan spesifikasi teknis.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-industrial-900 border border-slate-200 dark:border-industrial-800">
+          <div class="text-emerald-500 font-bold text-base">BERNILAI TAMBAH</div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Efisiensi total biaya dan masa pakai alat maksimal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-COLUMN FOOTER -->
+  <footer class="w-full border-t border-slate-200 dark:border-industrial-800 bg-white dark:bg-industrial-950 text-slate-600 dark:text-slate-400 text-xs py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-5 pb-10 border-b border-slate-200 dark:border-industrial-800">
+        <div class="space-y-3 lg:col-span-2">
+          <a href="index.html" class="inline-block transition-opacity hover:opacity-90">
+            <img src="images/ASN-removebg-preview.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 w-auto object-contain dark:hidden">
+            <img src="images/ASN-removebg-preview-dark.png" alt="CV Agape Sinar Nirwana (ASN)" class="h-10 w-auto object-contain hidden dark:block">
+          </a>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
+            General Supplier & Mining Support Solutions terpercaya di Indonesia.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-industrial-900 dark:text-white uppercase tracking-wider">Halaman</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-brand transition-colors">Beranda</a></li>
+            <li><a href="solutions.html" class="hover:text-brand transition-colors">Solusi Industri</a></li>
+            <li><a href="products.html" class="hover:text-brand transition-colors">Katalog Produk</a></li>
+            <li><a href="about.html" class="hover:text-brand transition-colors font-bold text-brand">Tentang Kami</a></li>
+            <li><a href="contact.html" class="hover:text-brand transition-colors">Kontak & RFQ</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-industrial-900 dark:text-white uppercase tracking-wider">Nilai Perusahaan</h4>
+          <ul class="space-y-2 text-xs">
+            <li>Visi Pengadaan Terpercaya</li>
+            <li>Layanan Cepat & Profesional</li>
+            <li>Solusi Efisien & Ekonomis</li>
+            <li>Kemitraan Jangka Panjang</li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-industrial-900 dark:text-white uppercase tracking-wider">Kontak Resmi</h4>
+          <ul class="space-y-2 text-xs">
+            <li>sales@agapesinarnirwana.com</li>
+            <li>Hotline: +62 812-3456-7890</li>
+            <li>Jl. Taruna Sari RT 63 No 17, Gunung Sari Ilir 76121, Balikpapan, Kalimantan Timur</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-500">
+        <p>&copy; 2026 CV Agape Sinar Nirwana (ASN). Hak Cipta Dilindungi.</p>
+        <p>Enterprise Company Profile Architecture.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
