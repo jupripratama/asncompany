@@ -4,8 +4,22 @@ import { SiteHeader } from "@/components/site-header";
 import { company } from "@/lib/company";
 import "./globals.css";
 
+function getSiteUrl(): string {
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (envUrl && envUrl.length > 0) {
+    return envUrl.startsWith("http") ? envUrl : `https://${envUrl}`;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim()) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.trim()}`;
+  }
+  if (process.env.VERCEL_URL?.trim()) {
+    return `https://${process.env.VERCEL_URL.trim()}`;
+  }
+  return "https://asncompany.vercel.app";
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: `${company.legalName} — ${company.tagline}`,
     template: `%s | ${company.shortName}`,
