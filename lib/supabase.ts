@@ -2,9 +2,17 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import type { AdminDataStore, AdminRfq, AdminServiceItem, CompanySettings } from "./admin-store";
 import type { Product } from "./products";
 
+function cleanUrl(url?: string): string {
+  if (!url) return "";
+  let cleaned = url.trim();
+  cleaned = cleaned.replace(/\/rest\/v1\/?$/, "");
+  cleaned = cleaned.replace(/\/+$/, "");
+  return cleaned;
+}
+
 // Check environment variables first, then check localStorage if set via admin settings
 export function getSupabaseCredentials() {
-  const envUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const envUrl = cleanUrl(process.env.NEXT_PUBLIC_SUPABASE_URL);
   const envKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
   if (envUrl && envKey && !envUrl.includes("your-project") && envUrl.startsWith("http")) {
@@ -13,7 +21,7 @@ export function getSupabaseCredentials() {
 
   if (typeof window !== "undefined") {
     try {
-      const storedUrl = localStorage.getItem("asn-supabase-url")?.trim();
+      const storedUrl = cleanUrl(localStorage.getItem("asn-supabase-url") || "");
       const storedKey = localStorage.getItem("asn-supabase-anon-key")?.trim();
       if (storedUrl && storedKey && storedUrl.startsWith("http")) {
         return { url: storedUrl, key: storedKey, source: "storage" as const };
@@ -23,6 +31,7 @@ export function getSupabaseCredentials() {
 
   return { url: "", key: "", source: "none" as const };
 }
+
 
 let cachedClient: SupabaseClient | null = null;
 let cachedKey = "";
@@ -59,7 +68,8 @@ export function getSupabaseSource(): "env" | "storage" | "none" {
 
 export function saveSupabaseConfig(url: string, anonKey: string) {
   if (typeof window === "undefined") return;
-  localStorage.setItem("asn-supabase-url", url.trim());
+  const cleaned = cleanUrl(url);
+  localStorage.setItem("asn-supabase-url", cleaned);
   localStorage.setItem("asn-supabase-anon-key", anonKey.trim());
   cachedClient = null;
   cachedKey = "";
