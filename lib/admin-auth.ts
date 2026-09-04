@@ -114,12 +114,12 @@ export async function loginAdminCredentials(
 }
 
 export function useAdminAuth() {
-  const [user, setUser] = useState<AdminUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<AdminUser | null>(() => getAdminSession());
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setUser(getAdminSession());
-    setLoading(false);
 
     function handleAuthChange() {
       setUser(getAdminSession());
@@ -141,7 +141,7 @@ export function useAdminAuth() {
   return {
     user,
     isAuthenticated: Boolean(user),
-    isLoading: loading,
+    isLoading: !mounted,
     logout,
   };
 }

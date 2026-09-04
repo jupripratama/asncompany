@@ -53,9 +53,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   // Redirect to login if unauthenticated
   useEffect(() => {
     if (!isLoading && !isAuthenticated && pathname !== "/admin/login") {
-      router.replace("/admin/login");
+      window.location.href = "/admin/login";
     }
-  }, [isAuthenticated, isLoading, pathname, router]);
+  }, [isAuthenticated, isLoading, pathname]);
 
   if (isLoading || !isAuthenticated) {
     return (
