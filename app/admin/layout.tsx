@@ -57,7 +57,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   }, [isAuthenticated, isLoading, pathname]);
 
-  if (isLoading || !isAuthenticated) {
+  if (!isAuthenticated && pathname !== "/admin/login") {
     return (
       <div className="min-h-screen grid place-items-center bg-slate-100 dark:bg-[#070e1a]">
         <div className="flex flex-col items-center gap-3 text-sm text-slate-500">
@@ -95,9 +95,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               ASN
             </div>
             <div>
-              <p className="text-sm font-black text-slate-900 dark:text-white">Panel Admin CMS</p>
+              <p className="text-sm font-black text-slate-900 dark:text-white">CV Agape Sinar Nirwana</p>
               <p className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
-                CV Agape Sinar Nirwana
+                Portal Manajemen
               </p>
             </div>
           </Link>
