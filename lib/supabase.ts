@@ -10,7 +10,11 @@ function cleanUrl(url?: string): string {
   return cleaned;
 }
 
-// Check environment variables first, then check localStorage if set via admin settings
+export const DEFAULT_SUPABASE_URL = "https://iomqeielniuwzretbagt.supabase.co";
+export const DEFAULT_SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvbXFlaWVsbml1d3pyZXRiYWd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MTY5NzYsImV4cCI6MjEwNDA5Mjk3Nn0.Qfktjv7UPfR7BXdw2ckLpv9Te5dDOAS3CAqLh7dY81I";
+
+// Check environment variables first, then check localStorage if set via admin settings, then fallback to default active project
 export function getSupabaseCredentials() {
   const envUrl = cleanUrl(process.env.NEXT_PUBLIC_SUPABASE_URL);
   const envKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
@@ -29,7 +33,7 @@ export function getSupabaseCredentials() {
     } catch (_) {}
   }
 
-  return { url: "", key: "", source: "none" as const };
+  return { url: DEFAULT_SUPABASE_URL, key: DEFAULT_SUPABASE_ANON_KEY, source: "env" as const };
 }
 
 
@@ -223,56 +227,70 @@ export async function syncStoreToSupabase(store: AdminDataStore): Promise<{
  * Fetch latest products and data from Supabase
  */
 export async function fetchStoreFromSupabase(): Promise<Partial<AdminDataStore> | null> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return null;
+  const result: Partial<AdminDataStore> = {};
 
+  // 1. Fetch real RFQs from server-side /api/rfq (runs on Vercel with database access, 100% reliable across all devices)
   try {
-    const result: Partial<AdminDataStore> = {};
-
-    const { data: prodData, error: prodErr } = await supabase
-      .from("products")
-      .select("*");
-
-    if (!prodErr && prodData && prodData.length > 0) {
-      result.products = prodData.map((row: any) => ({
-        slug: row.slug,
-        name: row.name,
-        category: row.category,
-        categoryLabel: row.category_label || row.categoryLabel,
-        description: row.description,
-        highlights: Array.isArray(row.highlights) ? row.highlights : [],
-        standards: Array.isArray(row.standards) ? row.standards : [],
-        brands: Array.isArray(row.brands) ? row.brands : [],
-        images: Array.isArray(row.images) ? row.images : [],
-        variants: Array.isArray(row.variants) ? row.variants : [],
-      }));
+    const res = await fetch("/api/rfq");
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.rfqs)) {
+        result.rfqs = data.rfqs;
+      }
     }
+  } catch (_) {}
 
-    const { data: rfqData, error: rfqErr } = await supabase
-      .from("rfqs")
-      .select("*")
-      .order("created_at", { ascending: false });
+  // 2. Fetch products from Supabase
+  const supabase = getSupabaseClient();
+  if (supabase) {
+    try {
+      const { data: prodData, error: prodErr } = await supabase
+        .from("products")
+        .select("*");
 
-    if (!rfqErr && rfqData && rfqData.length > 0) {
-      result.rfqs = rfqData.map((row: any) => ({
-        id: row.id,
-        requesterName: row.requester_name,
-        companyName: row.company_name,
-        email: row.email,
-        phone: row.phone,
-        category: row.category,
-        items: row.items,
-        createdAt: row.created_at,
-        status: row.status,
-        notes: row.internal_notes || undefined,
-      }));
+      if (!prodErr && prodData && prodData.length > 0) {
+        result.products = prodData.map((row: any) => ({
+          slug: row.slug,
+          name: row.name,
+          category: row.category,
+          categoryLabel: row.category_label || row.categoryLabel,
+          description: row.description,
+          highlights: Array.isArray(row.highlights) ? row.highlights : [],
+          standards: Array.isArray(row.standards) ? row.standards : [],
+          brands: Array.isArray(row.brands) ? row.brands : [],
+          images: Array.isArray(row.images) ? row.images : [],
+          variants: Array.isArray(row.variants) ? row.variants : [],
+        }));
+      }
+
+      // If RFQs wasn't fetched yet, attempt direct Supabase client query
+      if (!result.rfqs) {
+        const { data: rfqData, error: rfqErr } = await supabase
+          .from("rfqs")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (!rfqErr && rfqData && rfqData.length > 0) {
+          result.rfqs = rfqData.map((row: any) => ({
+            id: row.id,
+            requesterName: row.requester_name,
+            companyName: row.company_name,
+            email: row.email,
+            phone: row.phone,
+            category: row.category,
+            items: row.items,
+            createdAt: row.created_at,
+            status: row.status,
+            notes: row.internal_notes || undefined,
+          }));
+        }
+      }
+    } catch (err) {
+      console.error("fetchStoreFromSupabase error:", err);
     }
-
-    return Object.keys(result).length > 0 ? result : null;
-  } catch (err) {
-    console.error("fetchStoreFromSupabase error:", err);
-    return null;
   }
+
+  return Object.keys(result).length > 0 ? result : null;
 }
 
 /**
@@ -319,7 +337,7 @@ export async function deleteProductFromSupabase(slug: string) {
 }
 
 /**
- * Save an RFQ to Supabase table rfqs
+ * Save an RFQ to Supabase table rfqs (via /api/rfq and direct client fallback)
  */
 export async function insertRfqToSupabase(rfq: {
   requesterName: string;
@@ -328,7 +346,17 @@ export async function insertRfqToSupabase(rfq: {
   phone: string;
   category: string;
   items: string;
+  status?: string;
 }) {
+  try {
+    const res = await fetch("/api/rfq", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(rfq),
+    });
+    if (res.ok) return;
+  } catch (_) {}
+
   const supabase = getSupabaseClient();
   if (!supabase) return;
 
@@ -340,7 +368,7 @@ export async function insertRfqToSupabase(rfq: {
       phone: rfq.phone,
       category: rfq.category,
       items: rfq.items,
-      status: "new",
+      status: rfq.status || "new",
       source: "website",
     });
   } catch (err) {
@@ -352,6 +380,15 @@ export async function insertRfqToSupabase(rfq: {
  * Update RFQ status in Supabase table rfqs
  */
 export async function updateRfqStatusInSupabase(id: string, status: string, notes?: string) {
+  try {
+    const res = await fetch("/api/rfq", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status, notes }),
+    });
+    if (res.ok) return;
+  } catch (_) {}
+
   const supabase = getSupabaseClient();
   if (!supabase) return;
 
@@ -368,6 +405,13 @@ export async function updateRfqStatusInSupabase(id: string, status: string, note
  * Delete an RFQ from Supabase table rfqs
  */
 export async function deleteRfqFromSupabase(id: string) {
+  try {
+    const res = await fetch(`/api/rfq?id=${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    });
+    if (res.ok) return;
+  } catch (_) {}
+
   const supabase = getSupabaseClient();
   if (!supabase) return;
 
@@ -377,4 +421,5 @@ export async function deleteRfqFromSupabase(id: string) {
     console.error("deleteRfqFromSupabase error:", err);
   }
 }
+
 

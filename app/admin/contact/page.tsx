@@ -17,6 +17,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAdminStore, type AdminRfq } from "@/lib/admin-store";
 
+function formatWaNumber(phone: string): string {
+  let digits = phone.replace(/[^0-9]/g, "");
+  if (digits.startsWith("0")) digits = "62" + digits.slice(1);
+  if (!digits.startsWith("62")) digits = "62" + digits;
+  return digits;
+}
+
 export default function AdminContactPage() {
   const { store, mounted, updateCompany, updateRfqStatus, deleteRfq } = useAdminStore();
   const [activeTab, setActiveTab] = useState<"rfqs" | "company">("rfqs");
@@ -139,6 +146,21 @@ export default function AdminContactPage() {
                   {st.label}
                 </button>
               ))}
+              {store.rfqs.some((r) => r.status === "closed") && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const closed = store.rfqs.filter((r) => r.status === "closed");
+                    if (confirm(`Hapus seluruh ${closed.length} permintaan RFQ yang berstatus Selesai?`)) {
+                      closed.forEach((r) => deleteRfq(r.id));
+                      showNotice(`${closed.length} permintaan RFQ berstatus Selesai berhasil dibersihkan.`);
+                    }
+                  }}
+                  className="inline-flex items-center gap-1 rounded-lg border border-rose-200 bg-rose-50 px-2.5 py-1.5 text-[11px] font-bold text-rose-600 transition hover:bg-rose-100 dark:border-rose-900/40 dark:bg-rose-950/30 dark:text-rose-400"
+                >
+                  <Trash2 className="size-3" /> Bersihkan Selesai ({store.rfqs.filter((r) => r.status === "closed").length})
+                </button>
+              )}
             </div>
           </div>
 
@@ -210,13 +232,29 @@ export default function AdminContactPage() {
                               Detail
                             </button>
                             <a
-                              href={`https://wa.me/${rfq.phone.replace(/[^0-9]/g, "")}`}
+                              href={`https://wa.me/${formatWaNumber(rfq.phone)}?text=${encodeURIComponent(
+                                `Halo Bapak/Ibu ${rfq.requesterName} (${rfq.companyName}), kami dari CV Agape Sinar Nirwana ingin menindaklanjuti permintaan penawaran harga Anda mengenai "${rfq.items}". Apakah ada spesifikasi detail yang dapat kami bantu?`
+                              )}`}
                               target="_blank"
                               rel="noreferrer"
+                              title="Follow-up via WhatsApp"
                               className="rounded-lg bg-emerald-600 px-2 py-1 text-[11px] font-bold text-white hover:bg-emerald-700"
                             >
                               WA
                             </a>
+                            {rfq.email && rfq.email !== "-" && (
+                              <a
+                                href={`mailto:${rfq.email}?subject=${encodeURIComponent(
+                                  `Tindak Lanjut Penawaran Harga ASN — ${rfq.companyName}`
+                                )}&body=${encodeURIComponent(
+                                  `Halo Bapak/Ibu ${rfq.requesterName},\n\nTerima kasih atas kepercayaan Anda kepada CV Agape Sinar Nirwana.\n\nMenindaklanjuti permohonan penawaran harga Anda untuk kategori ${rfq.category} (${rfq.items}), kami siap membantu pengadaan dan surat penawaran resmi.\n\nSalam hormat,\nTim Sales CV Agape Sinar Nirwana`
+                                )}`}
+                                title="Follow-up via Email"
+                                className="rounded-lg bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+                              >
+                                Email
+                              </a>
+                            )}
                             <button
                               type="button"
                               onClick={() => {

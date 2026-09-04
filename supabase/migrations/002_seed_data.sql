@@ -48,27 +48,53 @@ create table if not exists public.company_settings (
 alter table public.products enable row level security;
 alter table public.services enable row level security;
 alter table public.company_settings enable row level security;
+alter table public.rfqs enable row level security;
 
--- Read policies
-create policy if not exists "Public read products" on public.products for select using (true);
-create policy if not exists "Public read services" on public.services for select using (true);
-create policy if not exists "Public read settings" on public.company_settings for select using (true);
+-- RFQ Policies (allows public RFQ form & admin to insert, select, update, delete)
+drop policy if exists "Staff view RFQs" on public.rfqs;
+drop policy if exists "Staff update RFQs" on public.rfqs;
+drop policy if exists "Allow insert rfqs" on public.rfqs;
+drop policy if exists "Allow select rfqs" on public.rfqs;
+drop policy if exists "Allow update rfqs" on public.rfqs;
+drop policy if exists "Allow delete rfqs" on public.rfqs;
 
--- Write policies (allows web admin and clients to manage content & RFQ)
-create policy if not exists "Allow insert products" on public.products for insert with check (true);
-create policy if not exists "Allow update products" on public.products for update using (true);
-create policy if not exists "Allow delete products" on public.products for delete using (true);
+create policy "Allow insert rfqs" on public.rfqs for insert with check (true);
+create policy "Allow select rfqs" on public.rfqs for select using (true);
+create policy "Allow update rfqs" on public.rfqs for update using (true);
+create policy "Allow delete rfqs" on public.rfqs for delete using (true);
 
-create policy if not exists "Allow insert services" on public.services for insert with check (true);
-create policy if not exists "Allow update services" on public.services for update using (true);
-create policy if not exists "Allow delete services" on public.services for delete using (true);
+-- Products Policies
+drop policy if exists "Public read products" on public.products;
+drop policy if exists "Allow insert products" on public.products;
+drop policy if exists "Allow update products" on public.products;
+drop policy if exists "Allow delete products" on public.products;
 
-create policy if not exists "Allow insert settings" on public.company_settings for insert with check (true);
-create policy if not exists "Allow update settings" on public.company_settings for update using (true);
+create policy "Allow select products" on public.products for select using (true);
+create policy "Allow insert products" on public.products for insert with check (true);
+create policy "Allow update products" on public.products for update using (true);
+create policy "Allow delete products" on public.products for delete using (true);
 
-create policy if not exists "Allow insert rfqs" on public.rfqs for insert with check (true);
-create policy if not exists "Allow select rfqs" on public.rfqs for select using (true);
-create policy if not exists "Allow update rfqs" on public.rfqs for update using (true);
+-- Services Policies
+drop policy if exists "Public read services" on public.services;
+drop policy if exists "Allow insert services" on public.services;
+drop policy if exists "Allow update services" on public.services;
+drop policy if exists "Allow delete services" on public.services;
+
+create policy "Allow select services" on public.services for select using (true);
+create policy "Allow insert services" on public.services for insert with check (true);
+create policy "Allow update services" on public.services for update using (true);
+create policy "Allow delete services" on public.services for delete using (true);
+
+-- Company Settings Policies
+drop policy if exists "Public read settings" on public.company_settings;
+drop policy if exists "Allow insert settings" on public.company_settings;
+drop policy if exists "Allow update settings" on public.company_settings;
+drop policy if exists "Allow delete settings" on public.company_settings;
+
+create policy "Allow select company_settings" on public.company_settings for select using (true);
+create policy "Allow insert company_settings" on public.company_settings for insert with check (true);
+create policy "Allow update company_settings" on public.company_settings for update using (true);
+create policy "Allow delete company_settings" on public.company_settings for delete using (true);
 
 -- Insert Default Company Settings
 insert into public.company_settings (id, legal_name, short_name, tagline, phone, email, address_street, address_subdistrict, address_city)
