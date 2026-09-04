@@ -12,7 +12,7 @@ export function RfqForm() {
   const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
   const { t, language } = useLanguage();
-  const { addRfq } = useAdminStore();
+  const { addRfq, store } = useAdminStore();
 
 
   const categoryLabels: Record<string, { id: string; en: string }> = {
@@ -173,7 +173,7 @@ export function RfqForm() {
         status: "new",
       });
     } catch (_) {}
-    window.open(whatsappUrl(whatsappMessage), "_blank", "noopener,noreferrer");
+    window.open(whatsappUrl(whatsappMessage, store.company?.phoneInternational), "_blank", "noopener,noreferrer");
   }
 
   function sendEmail() {
@@ -189,7 +189,7 @@ export function RfqForm() {
         status: "new",
       });
     } catch (_) {}
-    window.location.href = emailUrl(emailSubject, emailBody);
+    window.location.href = emailUrl(emailSubject, emailBody, store.company?.email);
   }
 
   function update(field: keyof typeof form, value: string) {

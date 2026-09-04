@@ -19,6 +19,7 @@ export default function HomePage() {
   const { t, language } = useLanguage();
   const { store } = useAdminStore();
   const heroImage = store.hero?.homeHeroImage || "/images/hero.jpg";
+  const currentCompany = store.company || company;
 
   const services = [
     {
@@ -102,7 +103,8 @@ export default function HomePage() {
                 href={whatsappUrl(
                   language === "en"
                     ? "Hello ASN, I would like to consult regarding procurement requirements for my project."
-                    : "Halo ASN, saya ingin berkonsultasi mengenai kebutuhan pengadaan."
+                    : "Halo ASN, saya ingin berkonsultasi mengenai kebutuhan pengadaan.",
+                  currentCompany.phoneInternational
                 )}
                 target="_blank"
                 rel="noreferrer"
@@ -228,17 +230,17 @@ export default function HomePage() {
           </div>
           <div className="surface-card relative overflow-hidden p-8 sm:p-10 border-slate-200 dark:border-slate-700 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-850">
             <h3 className="text-xl font-bold text-slate-950 dark:text-white">
-              {company.legalName} ({company.shortName})
+              {currentCompany.legalName} ({currentCompany.shortName})
             </h3>
             <p className="mt-1 text-xs font-bold tracking-widest text-cyan-600 uppercase dark:text-cyan-400">
-              {company.tagline}
+              {currentCompany.tagline}
             </p>
             <div className="mt-6 space-y-4 text-sm text-slate-600 dark:text-slate-300">
               <div className="flex gap-4 border-b border-slate-100 pb-4 dark:border-slate-800">
                 <span className="w-28 shrink-0 font-bold text-slate-900 dark:text-slate-100">
                   {language === "en" ? "Headquarters" : "Kantor Utama"}
                 </span>
-                <span>{company.addressCity}</span>
+                <span>{currentCompany.addressCity}</span>
               </div>
               <div className="flex gap-4 border-b border-slate-100 pb-4 dark:border-slate-800">
                 <span className="w-28 shrink-0 font-bold text-slate-900 dark:text-slate-100">
@@ -265,7 +267,7 @@ export default function HomePage() {
                   {language === "en" ? "Contact Support" : "Kontak Resmi"}
                 </span>
                 <span className="font-semibold text-cyan-600 dark:text-cyan-400">
-                  {company.phoneDisplay}
+                  {currentCompany.phoneDisplay}
                 </span>
               </div>
             </div>
@@ -290,7 +292,8 @@ export default function HomePage() {
               href={whatsappUrl(
                 language === "en"
                   ? "Hello ASN, I would like to consult regarding procurement requirements for my project."
-                  : "Halo ASN, saya ingin berkonsultasi mengenai kebutuhan pengadaan."
+                  : "Halo ASN, saya ingin berkonsultasi mengenai kebutuhan pengadaan.",
+                currentCompany.phoneInternational
               )}
               target="_blank"
               rel="noreferrer"

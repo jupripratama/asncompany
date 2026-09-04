@@ -19,11 +19,45 @@ import Image from "next/image";
 import Link from "next/link";
 import { whatsappUrl } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
+
+const serviceMeta: Record<string, {
+  icon: any;
+  accent: string;
+  iconClass: string;
+  imageAlt: string;
+}> = {
+  mining: {
+    icon: Pickaxe,
+    accent: "bg-cyan-600",
+    iconClass: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300",
+    imageAlt: "Rig pengeboran pada area pertambangan terbuka",
+  },
+  cctv: {
+    icon: Cctv,
+    accent: "bg-blue-600",
+    iconClass: "bg-blue-500/10 text-blue-700 dark:text-blue-300",
+    imageAlt: "Kamera CCTV yang memantau gerbang fasilitas pertambangan",
+  },
+  electrical: {
+    icon: CircuitBoard,
+    accent: "bg-amber-500",
+    iconClass: "bg-amber-500/10 text-amber-700 dark:text-amber-300",
+    imageAlt: "Panel distribusi listrik dan perangkat UPS industri",
+  },
+  fasteners: {
+    icon: Nut,
+    accent: "bg-emerald-600",
+    iconClass: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+    imageAlt: "Fastener industri pada sambungan mesin dan struktur baja",
+  },
+};
 
 export default function SolutionsPage() {
   const { t, language } = useLanguage();
+  const { store } = useAdminStore();
 
-  const services = [
+  const fallbackServices = [
     {
       id: "mining",
       title: language === "en" ? "Mining Tools & Drilling" : "Mining Tools & Drilling",
@@ -202,6 +236,19 @@ export default function SolutionsPage() {
       cta: language === "en" ? "Request Fasteners Quote" : "Minta penawaran Fasteners",
     },
   ];
+
+  const services = (store.services && store.services.length > 0 ? store.services : fallbackServices).map((s) => {
+    const meta = serviceMeta[s.id] || {
+      icon: Pickaxe,
+      accent: "bg-cyan-600",
+      iconClass: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300",
+      imageAlt: s.title,
+    };
+    return {
+      ...s,
+      ...meta,
+    };
+  });
 
   const sectors = [
     {
@@ -433,7 +480,8 @@ export default function SolutionsPage() {
               href={whatsappUrl(
                 language === "en"
                   ? "Hello ASN, I would like to consult regarding procurement services."
-                  : "Halo ASN, saya ingin berkonsultasi mengenai layanan pengadaan."
+                  : "Halo ASN, saya ingin berkonsultasi mengenai layanan pengadaan.",
+                store.company?.phoneInternational
               )}
               target="_blank"
               rel="noreferrer"

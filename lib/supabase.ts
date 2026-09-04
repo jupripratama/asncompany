@@ -1,5 +1,5 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import type { AdminDataStore, AdminRfq, AdminServiceItem, CompanySettings } from "./admin-store";
+import type { AdminDataStore, AdminRfq, AdminServiceItem, CompanySettings, AdminHeroSettings, AdminAboutSettings } from "./admin-store";
 import type { Product } from "./products";
 
 function cleanUrl(url?: string): string {
@@ -94,6 +94,20 @@ export async function testSupabaseConnection(): Promise<{
   message: string;
   tableExists?: boolean;
 }> {
+  try {
+    const res = await fetch("/api/content");
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success) {
+        return {
+          success: true,
+          tableExists: true,
+          message: "Koneksi Supabase Cloud Database aktif dan tersinkronisasi!",
+        };
+      }
+    }
+  } catch (_) {}
+
   const supabase = getSupabaseClient();
   if (!supabase) {
     return {
@@ -135,18 +149,48 @@ export async function testSupabaseConnection(): Promise<{
 /**
  * Upload entire local store data to Supabase PostgreSQL database tables
  */
+/**
+ * Centralized function to dispatch cloud update to server API
+ */
+export async function saveCloudContent(action: string, payload: any): Promise<boolean> {
+  try {
+    const res = await fetch("/api/content", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, payload }),
+    });
+    if (res.ok) return true;
+  } catch (err) {
+    console.error(`saveCloudContent (${action}) error:`, err);
+  }
+  return false;
+}
+
+/**
+ * Upload entire local store data to Supabase PostgreSQL database tables
+ */
 export async function syncStoreToSupabase(store: AdminDataStore): Promise<{
   success: boolean;
   message: string;
   count?: number;
 }> {
+  // 1. Try server-side unified sync (100% reliable)
+  const sent = await saveCloudContent("sync_all", store);
+  if (sent) {
+    return {
+      success: true,
+      message: `Berhasil menyinkronkan seluruh ${store.products.length} produk, varian, 4 layanan, hero banner, dan profil kantor ke Supabase Cloud!`,
+      count: store.products.length,
+    };
+  }
+
+  // 2. Direct client fallback
   const supabase = getSupabaseClient();
   if (!supabase) {
     return { success: false, message: "Koneksi Supabase belum disetel." };
   }
 
   try {
-    // 1. Sync Products
     const productRows = store.products.map((p) => ({
       slug: p.slug,
       name: p.name,
@@ -167,7 +211,6 @@ export async function syncStoreToSupabase(store: AdminDataStore): Promise<{
 
     if (prodError) throw new Error(`Gagal menyimpan produk: ${prodError.message}`);
 
-    // 2. Sync Services
     if (store.services && store.services.length > 0) {
       const serviceRows = store.services.map((s) => ({
         id: s.id,
@@ -180,16 +223,11 @@ export async function syncStoreToSupabase(store: AdminDataStore): Promise<{
         updated_at: new Date().toISOString(),
       }));
 
-      const { error: srvError } = await supabase
-        .from("services")
-        .upsert(serviceRows, { onConflict: "id" });
-
-      if (srvError) console.warn("Sync services warning:", srvError.message);
+      await supabase.from("services").upsert(serviceRows, { onConflict: "id" });
     }
 
-    // 3. Sync Company Settings & Hero
     if (store.company) {
-      const companyRow = {
+      await supabase.from("company_settings").upsert({
         id: "main",
         legal_name: store.company.legalName,
         short_name: store.company.shortName,
@@ -199,15 +237,8 @@ export async function syncStoreToSupabase(store: AdminDataStore): Promise<{
         address_street: store.company.addressStreet,
         address_subdistrict: store.company.addressSubdistrict,
         address_city: store.company.addressCity,
-        hero_image: store.hero?.homeHeroImage || "/images/hero.jpg",
         updated_at: new Date().toISOString(),
-      };
-
-      const { error: compError } = await supabase
-        .from("company_settings")
-        .upsert(companyRow, { onConflict: "id" });
-
-      if (compError) console.warn("Sync company warning:", compError.message);
+      }, { onConflict: "id" });
     }
 
     return {
@@ -224,23 +255,24 @@ export async function syncStoreToSupabase(store: AdminDataStore): Promise<{
 }
 
 /**
- * Fetch latest products and data from Supabase
+ * Fetch latest products, services, hero, about, company, and RFQs from Supabase Cloud
  */
 export async function fetchStoreFromSupabase(): Promise<Partial<AdminDataStore> | null> {
-  const result: Partial<AdminDataStore> = {};
-
-  // 1. Fetch real RFQs from server-side /api/rfq (runs on Vercel with database access, 100% reliable across all devices)
+  // 1. Fetch complete unified content from server-side /api/content (runs on Vercel with database access, 100% reliable)
   try {
-    const res = await fetch("/api/rfq");
+    const res = await fetch("/api/content");
     if (res.ok) {
-      const data = await res.json();
-      if (data.success && Array.isArray(data.rfqs)) {
-        result.rfqs = data.rfqs;
+      const json = await res.json();
+      if (json.success && json.data && Object.keys(json.data).length > 0) {
+        return json.data;
       }
     }
-  } catch (_) {}
+  } catch (err) {
+    console.warn("fetchStoreFromSupabase /api/content failed, falling back to direct client:", err);
+  }
 
-  // 2. Fetch products from Supabase
+  // 2. Direct client fallback
+  const result: Partial<AdminDataStore> = {};
   const supabase = getSupabaseClient();
   if (supabase) {
     try {
@@ -263,30 +295,27 @@ export async function fetchStoreFromSupabase(): Promise<Partial<AdminDataStore> 
         }));
       }
 
-      // If RFQs wasn't fetched yet, attempt direct Supabase client query
-      if (!result.rfqs) {
-        const { data: rfqData, error: rfqErr } = await supabase
-          .from("rfqs")
-          .select("*")
-          .order("created_at", { ascending: false });
+      const { data: rfqData, error: rfqErr } = await supabase
+        .from("rfqs")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-        if (!rfqErr && rfqData && rfqData.length > 0) {
-          result.rfqs = rfqData.map((row: any) => ({
-            id: row.id,
-            requesterName: row.requester_name,
-            companyName: row.company_name,
-            email: row.email,
-            phone: row.phone,
-            category: row.category,
-            items: row.items,
-            createdAt: row.created_at,
-            status: row.status,
-            notes: row.internal_notes || undefined,
-          }));
-        }
+      if (!rfqErr && rfqData && rfqData.length > 0) {
+        result.rfqs = rfqData.map((row: any) => ({
+          id: row.id,
+          requesterName: row.requester_name,
+          companyName: row.company_name,
+          email: row.email,
+          phone: row.phone,
+          category: row.category,
+          items: row.items,
+          createdAt: row.created_at,
+          status: row.status,
+          notes: row.internal_notes || undefined,
+        }));
       }
     } catch (err) {
-      console.error("fetchStoreFromSupabase error:", err);
+      console.error("fetchStoreFromSupabase direct client error:", err);
     }
   }
 
@@ -294,9 +323,12 @@ export async function fetchStoreFromSupabase(): Promise<Partial<AdminDataStore> 
 }
 
 /**
- * Upsert a single product to Supabase
+ * Upsert a single product to Supabase Cloud
  */
 export async function upsertProductToSupabase(product: Product) {
+  const sent = await saveCloudContent("update_product", product);
+  if (sent) return;
+
   const supabase = getSupabaseClient();
   if (!supabase) return;
 
@@ -318,22 +350,53 @@ export async function upsertProductToSupabase(product: Product) {
       { onConflict: "slug" }
     );
   } catch (err) {
-    console.error("upsertProductToSupabase error:", err);
+    console.error("upsertProductToSupabase fallback error:", err);
   }
 }
 
 /**
- * Delete a product from Supabase
+ * Delete a product from Supabase Cloud
  */
 export async function deleteProductFromSupabase(slug: string) {
+  const sent = await saveCloudContent("delete_product", { slug });
+  if (sent) return;
+
   const supabase = getSupabaseClient();
   if (!supabase) return;
 
   try {
     await supabase.from("products").delete().eq("slug", slug);
   } catch (err) {
-    console.error("deleteProductFromSupabase error:", err);
+    console.error("deleteProductFromSupabase fallback error:", err);
   }
+}
+
+/**
+ * Sync Hero Banner settings to Supabase Cloud
+ */
+export async function syncHeroToSupabase(hero: Partial<AdminHeroSettings>) {
+  await saveCloudContent("update_hero", hero);
+}
+
+/**
+ * Sync a service item to Supabase Cloud
+ */
+export async function syncServiceToSupabase(service: AdminServiceItem) {
+  await saveCloudContent("update_service", service);
+}
+
+/**
+ * Sync company settings to Supabase Cloud
+ */
+export async function syncCompanyToSupabase(companyData: Partial<CompanySettings>) {
+  await saveCloudContent("update_company", companyData);
+}
+
+/**
+ * Sync about settings to Supabase Cloud
+ */
+export async function syncAboutToSupabase(about: Partial<AdminAboutSettings>) {
+  await saveCloudContent("update_about", about);
 }
 
 /**

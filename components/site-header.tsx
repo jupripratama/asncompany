@@ -7,14 +7,17 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { company } from "@/lib/company";
+import { company as defaultCompany } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
+  const { store } = useAdminStore();
+  const currentCompany = store.company || defaultCompany;
 
   if (pathname?.startsWith("/admin")) return null;
 
@@ -31,14 +34,14 @@ export function SiteHeader() {
       {/* Top Notification Bar */}
       <div className="hidden border-b border-slate-800 bg-slate-950 text-[11px] text-slate-300 sm:block">
         <div className="site-container flex min-h-9 items-center justify-between gap-4">
-          <span>{t("topbarTagline")}</span>
+          <span>{currentCompany.tagline || t("topbarTagline")}</span>
           <div className="flex items-center gap-5">
-            <span>{t("businessHours")}</span>
-            <a href={`mailto:${company.email}`} className="transition hover:text-cyan-400">
-              {company.email}
+            <span>{currentCompany.businessHours || t("businessHours")}</span>
+            <a href={`mailto:${currentCompany.email}`} className="transition hover:text-cyan-400">
+              {currentCompany.email}
             </a>
-            <a href={`tel:+${company.phoneInternational}`} className="font-semibold text-emerald-400">
-              {company.phoneDisplay}
+            <a href={`tel:+${currentCompany.phoneInternational}`} className="font-semibold text-emerald-400">
+              {currentCompany.phoneDisplay}
             </a>
           </div>
         </div>

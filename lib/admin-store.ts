@@ -8,6 +8,10 @@ import {
   deleteRfqFromSupabase,
   fetchStoreFromSupabase,
   insertRfqToSupabase,
+  syncAboutToSupabase,
+  syncCompanyToSupabase,
+  syncHeroToSupabase,
+  syncServiceToSupabase,
   updateRfqStatusInSupabase,
   upsertProductToSupabase,
 } from "@/lib/supabase";
@@ -263,10 +267,14 @@ export function useAdminStore() {
     fetchStoreFromSupabase().then((remoteData) => {
       if (remoteData) {
         setStore((prev) => {
-          const updated = {
+          const updated: AdminDataStore = {
             ...prev,
             ...(remoteData.products?.length ? { products: remoteData.products } : {}),
-            ...(remoteData.rfqs?.length ? { rfqs: remoteData.rfqs } : {}),
+            ...(remoteData.services?.length ? { services: remoteData.services } : {}),
+            ...(remoteData.hero ? { hero: { ...prev.hero, ...remoteData.hero } } : {}),
+            ...(remoteData.company ? { company: { ...prev.company, ...remoteData.company } } : {}),
+            ...(remoteData.about ? { about: { ...prev.about, ...remoteData.about } } : {}),
+            ...(remoteData.rfqs ? { rfqs: remoteData.rfqs } : {}),
           };
           saveAdminStore(updated);
           return updated;
@@ -310,24 +318,31 @@ export function useAdminStore() {
   }
 
   function updateHero(hero: Partial<AdminHeroSettings>) {
-    const nextStore = { ...store, hero: { ...store.hero, ...hero } };
+    const nextHero = { ...store.hero, ...hero };
+    const nextStore = { ...store, hero: nextHero };
     saveAdminStore(nextStore);
+    syncHeroToSupabase(nextHero);
   }
 
   function updateService(updated: AdminServiceItem) {
     const nextServices = store.services.map((s) => (s.id === updated.id ? updated : s));
     const nextStore = { ...store, services: nextServices };
     saveAdminStore(nextStore);
+    syncServiceToSupabase(updated);
   }
 
   function updateAbout(about: Partial<AdminAboutSettings>) {
-    const nextStore = { ...store, about: { ...store.about, ...about } };
+    const nextAbout = { ...store.about, ...about };
+    const nextStore = { ...store, about: nextAbout };
     saveAdminStore(nextStore);
+    syncAboutToSupabase(nextAbout);
   }
 
   function updateCompany(companyData: Partial<CompanySettings>) {
-    const nextStore = { ...store, company: { ...store.company, ...companyData } };
+    const nextCompany = { ...store.company, ...companyData };
+    const nextStore = { ...store, company: nextCompany };
     saveAdminStore(nextStore);
+    syncCompanyToSupabase(nextCompany);
   }
 
   function updateRfqStatus(id: string, status: AdminRfq["status"], notes?: string) {

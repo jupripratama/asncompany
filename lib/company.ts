@@ -23,16 +23,18 @@ export const navigation = [
   { href: "/contact", label: "Kontak" },
 ] as const;
 
-export function whatsappUrl(message?: string) {
-  const base = `https://wa.me/${company.phoneInternational}`;
+export function whatsappUrl(message?: string, customPhone?: string) {
+  const phone = (customPhone || company.phoneInternational).replace(/[^0-9]/g, "");
+  const base = `https://wa.me/${phone}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
-export function emailUrl(subject?: string, body?: string) {
+export function emailUrl(subject?: string, body?: string, customEmail?: string) {
+  const email = customEmail || company.email;
   const parts: string[] = [];
   if (subject) parts.push(`subject=${encodeURIComponent(subject)}`);
   if (body) parts.push(`body=${encodeURIComponent(body)}`);
   const query = parts.length > 0 ? `?${parts.join("&")}` : "";
-  return `mailto:${company.email}${query}`;
+  return `mailto:${email}${query}`;
 }
 

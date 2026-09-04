@@ -5,77 +5,98 @@ import Link from "next/link";
 import { ArrowRight, Check, Eye } from "lucide-react";
 import { company } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 
 export default function AboutPage() {
   const { t, language } = useLanguage();
+  const { store } = useAdminStore();
 
-  const missions = [
-    {
-      number: "1",
-      title: t("aboutMission1Title"),
-      description: t("aboutMission1Desc"),
-    },
-    {
-      number: "2",
-      title: t("aboutMission2Title"),
-      description: t("aboutMission2Desc"),
-    },
-    {
-      number: "3",
-      title: t("aboutMission3Title"),
-      description: t("aboutMission3Desc"),
-    },
-    {
-      number: "4",
-      title: t("aboutMission4Title"),
-      description: t("aboutMission4Desc"),
-    },
-  ];
+  const currentLegalName = store.company?.legalName || company.legalName;
+  const currentShortName = store.company?.shortName || company.shortName;
+  const currentTagline = store.company?.tagline || company.tagline;
 
-  const pillars = [
-    {
-      title: t("aboutPillar1Title"),
-      description: t("aboutPillar1Desc"),
-    },
-    {
-      title: t("aboutPillar2Title"),
-      description: t("aboutPillar2Desc"),
-    },
-    {
-      title: t("aboutPillar3Title"),
-      description: t("aboutPillar3Desc"),
-    },
-    {
-      title: t("aboutPillar4Title"),
-      description: t("aboutPillar4Desc"),
-    },
-    {
-      title: t("aboutPillar5Title"),
-      description: t("aboutPillar5Desc"),
-    },
-    {
-      title: t("aboutPillar6Title"),
-      description: t("aboutPillar6Desc"),
-    },
-  ];
+  const profileP1 = (language === "id" && store.about?.profileP1) ? store.about.profileP1 : t("aboutProfileP1");
+  const profileP2 = (language === "id" && store.about?.profileP2) ? store.about.profileP2 : t("aboutProfileP2");
+  const visionTitle = (language === "id" && store.about?.visionTitle) ? store.about.visionTitle : t("aboutVisionTitle");
+  const visionText = (language === "id" && store.about?.visionText) ? store.about.visionText : t("aboutVisionText");
 
-  const promisePoints = [
-    {
-      label: t("aboutPromise1Label"),
-      color: "text-[#00A3C4]",
-      description: t("aboutPromise1Desc"),
-    },
-    {
-      label: t("aboutPromise2Label"),
-      color: "text-slate-900 dark:text-white",
-      description: t("aboutPromise2Desc"),
-    },
-    {
-      label: t("aboutPromise3Label"),
-      color: "text-emerald-500",
-      description: t("aboutPromise3Desc"),
-    },
-  ];
+  const missions = (store.about?.missions && store.about.missions.length > 0 && language === "id")
+    ? store.about.missions
+    : [
+        {
+          number: "1",
+          title: t("aboutMission1Title"),
+          description: t("aboutMission1Desc"),
+        },
+        {
+          number: "2",
+          title: t("aboutMission2Title"),
+          description: t("aboutMission2Desc"),
+        },
+        {
+          number: "3",
+          title: t("aboutMission3Title"),
+          description: t("aboutMission3Desc"),
+        },
+        {
+          number: "4",
+          title: t("aboutMission4Title"),
+          description: t("aboutMission4Desc"),
+        },
+      ];
+
+  const pillars = (store.about?.pillars && store.about.pillars.length > 0 && language === "id")
+    ? store.about.pillars
+    : [
+        {
+          title: t("aboutPillar1Title"),
+          description: t("aboutPillar1Desc"),
+        },
+        {
+          title: t("aboutPillar2Title"),
+          description: t("aboutPillar2Desc"),
+        },
+        {
+          title: t("aboutPillar3Title"),
+          description: t("aboutPillar3Desc"),
+        },
+        {
+          title: t("aboutPillar4Title"),
+          description: t("aboutPillar4Desc"),
+        },
+        {
+          title: t("aboutPillar5Title"),
+          description: t("aboutPillar5Desc"),
+        },
+        {
+          title: t("aboutPillar6Title"),
+          description: t("aboutPillar6Desc"),
+        },
+      ];
+
+  const promisePoints = (store.about?.promises && store.about.promises.length > 0 && language === "id")
+    ? store.about.promises.map((p, idx) => ({
+        label: p.label,
+        description: p.description,
+        color: idx === 0 ? "text-[#00A3C4]" : idx === 1 ? "text-slate-900 dark:text-white" : "text-emerald-500",
+      }))
+    : [
+        {
+          label: t("aboutPromise1Label"),
+          color: "text-[#00A3C4]",
+          description: t("aboutPromise1Desc"),
+        },
+        {
+          label: t("aboutPromise2Label"),
+          color: "text-slate-900 dark:text-white",
+          description: t("aboutPromise2Desc"),
+        },
+        {
+          label: t("aboutPromise3Label"),
+          color: "text-emerald-500",
+          description: t("aboutPromise3Desc"),
+        },
+      ];
 
   return (
     <>
@@ -88,14 +109,14 @@ export default function AboutPage() {
                 {t("aboutProfileEyebrow")}
               </div>
               <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-                {company.legalName} ({company.shortName})
+                {currentLegalName} ({currentShortName})
               </h1>
-              <p className="text-lg font-semibold text-[#00A3C4]">{company.tagline}</p>
+              <p className="text-lg font-semibold text-[#00A3C4]">{currentTagline}</p>
               <p className="pt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                {t("aboutProfileP1")}
+                {profileP1}
               </p>
               <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                {t("aboutProfileP2")}
+                {profileP2}
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-4">
                 <Link href="/contact" className="button-primary inline-flex">

@@ -67,7 +67,7 @@ export function ProductCatalog() {
         </label>
         <div className="flex flex-wrap gap-2" aria-label="Filter kategori">
           {[{ id: "all" }, ...categories].map((item) => {
-            const count = item.id === "all" ? products.length : products.filter((p) => p.category === item.id).length;
+            const count = item.id === "all" ? allProducts.length : allProducts.filter((p) => p.category === item.id).length;
             const label = categoryLabels[item.id]?.[language] || item.id;
             return (
               <button
