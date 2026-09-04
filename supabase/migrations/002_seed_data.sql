@@ -49,9 +49,26 @@ alter table public.products enable row level security;
 alter table public.services enable row level security;
 alter table public.company_settings enable row level security;
 
-create policy "Public read products" on public.products for select using (true);
-create policy "Public read services" on public.services for select using (true);
-create policy "Public read settings" on public.company_settings for select using (true);
+-- Read policies
+create policy if not exists "Public read products" on public.products for select using (true);
+create policy if not exists "Public read services" on public.services for select using (true);
+create policy if not exists "Public read settings" on public.company_settings for select using (true);
+
+-- Write policies (allows web admin and clients to manage content & RFQ)
+create policy if not exists "Allow insert products" on public.products for insert with check (true);
+create policy if not exists "Allow update products" on public.products for update using (true);
+create policy if not exists "Allow delete products" on public.products for delete using (true);
+
+create policy if not exists "Allow insert services" on public.services for insert with check (true);
+create policy if not exists "Allow update services" on public.services for update using (true);
+create policy if not exists "Allow delete services" on public.services for delete using (true);
+
+create policy if not exists "Allow insert settings" on public.company_settings for insert with check (true);
+create policy if not exists "Allow update settings" on public.company_settings for update using (true);
+
+create policy if not exists "Allow insert rfqs" on public.rfqs for insert with check (true);
+create policy if not exists "Allow select rfqs" on public.rfqs for select using (true);
+create policy if not exists "Allow update rfqs" on public.rfqs for update using (true);
 
 -- Insert Default Company Settings
 insert into public.company_settings (id, legal_name, short_name, tagline, phone, email, address_street, address_subdistrict, address_city)
@@ -64,3 +81,4 @@ values
   ('Budi Santoso', 'PT Kaltim Prima Coal Project', 'budi.santoso@kpc-supplier.co.id', '081234567890', 'Mining Tools', 'Drill Bit T45 76mm Button Bit 24 pcs', 'new'),
   ('Irfan Kurniawan', 'PT Berau Coal Energy', 'procurement@beraucoal.com', '081398765432', 'Fasteners', 'Stud Bolt ASTM A193 B7 3/4" x 120mm 150 sets', 'quoted'),
   ('Rendra Pratama', 'PT Petrosea Tbk Site Tabang', 'rendra.p@petrosea.com', '081122334455', 'CCTV & Security', '8 unit Kamera Hikvision ColorVu + 1 unit NVR 16 Channel', 'reviewing');
+

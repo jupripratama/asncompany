@@ -3,6 +3,13 @@
 import { useEffect, useState } from "react";
 import { company as initialCompany } from "@/lib/company";
 import { products as initialProducts, type Product } from "@/lib/products";
+import {
+  deleteProductFromSupabase,
+  fetchStoreFromSupabase,
+  insertRfqToSupabase,
+  upsertProductToSupabase,
+} from "@/lib/supabase";
+
 
 export type AdminHeroSettings = {
   homeHeroImage: string;
@@ -250,14 +257,27 @@ export function useAdminStore() {
     setStore(getAdminStore());
     setMounted(true);
 
+    // Background sync from Supabase if connected
+    fetchStoreFromSupabase().then((remoteData) => {
+      if (remoteData?.products && remoteData.products.length > 0) {
+        setStore((prev) => {
+          const updated = { ...prev, products: remoteData.products! };
+          saveAdminStore(updated);
+          return updated;
+        });
+      }
+    });
+
     function handleUpdate() {
       setStore(getAdminStore());
     }
 
     window.addEventListener("asn-store-updated", handleUpdate);
+    window.addEventListener("asn-supabase-config-updated", handleUpdate);
     window.addEventListener("storage", handleUpdate);
     return () => {
       window.removeEventListener("asn-store-updated", handleUpdate);
+      window.removeEventListener("asn-supabase-config-updated", handleUpdate);
       window.removeEventListener("storage", handleUpdate);
     };
   }, []);
@@ -266,18 +286,21 @@ export function useAdminStore() {
     const nextProducts = store.products.map((p) => (p.slug === updated.slug ? updated : p));
     const nextStore = { ...store, products: nextProducts };
     saveAdminStore(nextStore);
+    upsertProductToSupabase(updated);
   }
 
   function addProduct(newProduct: Product) {
     const nextProducts = [newProduct, ...store.products];
     const nextStore = { ...store, products: nextProducts };
     saveAdminStore(nextStore);
+    upsertProductToSupabase(newProduct);
   }
 
   function deleteProduct(slug: string) {
     const nextProducts = store.products.filter((p) => p.slug !== slug);
     const nextStore = { ...store, products: nextProducts };
     saveAdminStore(nextStore);
+    deleteProductFromSupabase(slug);
   }
 
   function updateHero(hero: Partial<AdminHeroSettings>) {
@@ -315,6 +338,7 @@ export function useAdminStore() {
     };
     const nextStore = { ...store, rfqs: [rfq, ...store.rfqs] };
     saveAdminStore(nextStore);
+    insertRfqToSupabase(newRfq);
   }
 
   return {

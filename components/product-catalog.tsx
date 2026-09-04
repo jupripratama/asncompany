@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
 import { categories, cctvBrands, products, type ProductCategory } from "@/lib/products";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 import { cn } from "@/lib/utils";
 import { ProductImageSlider } from "@/components/product-image-slider";
 
@@ -27,6 +28,8 @@ export function ProductCatalog() {
   );
   const [query, setQuery] = useState("");
   const { t, language } = useLanguage();
+  const { store } = useAdminStore();
+  const allProducts = store.products?.length > 0 ? store.products : products;
 
   const categoryLabels: Record<string, { id: string; en: string }> = {
     all: { id: "Semua", en: "All" },
@@ -38,7 +41,7 @@ export function ProductCatalog() {
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("id");
-    return products.filter((product) => {
+    return allProducts.filter((product) => {
       const matchesCategory = category === "all" || product.category === category;
       const matchesQuery =
         !normalized ||
@@ -47,7 +50,7 @@ export function ProductCatalog() {
           .includes(normalized);
       return matchesCategory && matchesQuery;
     });
-  }, [category, query]);
+  }, [allProducts, category, query]);
 
   return (
     <>

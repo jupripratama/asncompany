@@ -4,11 +4,15 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Suspense } from "react";
 import { PageHero } from "@/components/page-hero";
 import { RfqForm } from "@/components/rfq-form";
-import { company, whatsappUrl } from "@/lib/company";
+import { company as defaultCompany, whatsappUrl } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 
 export default function ContactPage() {
   const { t, language } = useLanguage();
+  const { store } = useAdminStore();
+  const currentCompany = store.company || defaultCompany;
+
 
   return (
     <>
@@ -21,23 +25,23 @@ export default function ContactPage() {
         <aside className="space-y-5">
           <div className="surface-card p-7">
             <p className="eyebrow">{t("contactOfficialInfo")}</p>
-            <h2 className="mt-3 text-2xl font-black text-slate-950 dark:text-white">{company.legalName}</h2>
+            <h2 className="mt-3 text-2xl font-black text-slate-950 dark:text-white">{currentCompany.legalName}</h2>
             <ul className="mt-7 space-y-5 text-sm text-slate-600 dark:text-slate-300">
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 size-5 shrink-0 text-cyan-500" />
                 <span>
                   <strong className="block text-slate-900 dark:text-white">{t("contactOfficeAddress")}</strong>
-                  <span className="block">{company.addressStreet}</span>
-                  <span className="block">{company.addressSubdistrict}</span>
-                  <span className="block">{company.addressCity}</span>
+                  <span className="block">{currentCompany.addressStreet}</span>
+                  <span className="block">{currentCompany.addressSubdistrict}</span>
+                  <span className="block">{currentCompany.addressCity}</span>
                 </span>
               </li>
               <li className="flex gap-3">
                 <Phone className="mt-0.5 size-5 shrink-0 text-cyan-500" />
                 <span>
                   <strong className="block text-slate-900 dark:text-white">{t("contactPhoneWa")}</strong>
-                  <a href={`tel:+${company.phoneInternational}`} className="hover:text-cyan-600">
-                    {company.phoneDisplay}
+                  <a href={`tel:+${currentCompany.phoneInternational}`} className="hover:text-cyan-600">
+                    {currentCompany.phoneDisplay}
                   </a>
                 </span>
               </li>
@@ -45,8 +49,8 @@ export default function ContactPage() {
                 <Mail className="mt-0.5 size-5 shrink-0 text-cyan-500" />
                 <span>
                   <strong className="block text-slate-900 dark:text-white">{t("contactEmail")}</strong>
-                  <a href={`mailto:${company.email}`} className="break-all hover:text-cyan-600">
-                    {company.email}
+                  <a href={`mailto:${currentCompany.email}`} className="break-all hover:text-cyan-600">
+                    {currentCompany.email}
                   </a>
                 </span>
               </li>
@@ -65,7 +69,7 @@ export default function ContactPage() {
             <MessageCircle className="size-7" />
             <span>
               <strong className="block">{t("contactChatWaButton")}</strong>
-              <span className="text-sm text-emerald-100">{company.phoneDisplay}</span>
+              <span className="text-sm text-emerald-100">{currentCompany.phoneDisplay}</span>
             </span>
           </a>
         </aside>

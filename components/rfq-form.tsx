@@ -6,11 +6,14 @@ import { useMemo, useRef, useState } from "react";
 import { categories } from "@/lib/products";
 import { company, emailUrl, whatsappUrl } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 
 export function RfqForm() {
   const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
   const { t, language } = useLanguage();
+  const { addRfq } = useAdminStore();
+
 
   const categoryLabels: Record<string, { id: string; en: string }> = {
     mining: { id: "Mining Tools & Pengeboran", en: "Mining Tools & Rock Drilling" },
@@ -68,11 +71,33 @@ export function RfqForm() {
 
   function sendWhatsApp() {
     if (!validate()) return;
+    try {
+      addRfq({
+        requesterName: form.name,
+        companyName: form.companyName || "-",
+        email: form.email,
+        phone: form.phone,
+        category: form.category,
+        items: form.items || "Permintaan informasi umum",
+        status: "new",
+      });
+    } catch (_) {}
     window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
   }
 
   function sendEmail() {
     if (!validate()) return;
+    try {
+      addRfq({
+        requesterName: form.name,
+        companyName: form.companyName || "-",
+        email: form.email,
+        phone: form.phone,
+        category: form.category,
+        items: form.items || "Permintaan informasi umum",
+        status: "new",
+      });
+    } catch (_) {}
     window.location.href = emailUrl(`RFQ — ${form.companyName || form.name}`, message);
   }
 
