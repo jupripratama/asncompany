@@ -107,7 +107,7 @@ export default function AdminDashboardPage() {
             <Sparkles className="size-3.5" /> Sistem Siap Pakai & Tersinkronisasi
           </span>
           <h2 className="mt-4 text-2xl font-black tracking-tight sm:text-4xl">
-            Selamat Datang di Admin CMS CV Agape Sinar Nirwana
+            Selamat Datang di CV Agape Sinar Nirwana
           </h2>
           <p className="mt-3 text-sm leading-6 text-slate-300 sm:text-base">
             Seluruh data riil (24 produk, varian spesifikasi teknis, 4 layanan, profil perusahaan, dan foto) telah

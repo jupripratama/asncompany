@@ -160,7 +160,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <p className="font-bold text-slate-900 dark:text-white truncate">
                   {user?.email || "Admin ASN"}
                 </p>
-                <p className="text-[10px] text-slate-500">Mode CMS Aktif</p>
+                <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Sesi Terhubung</p>
               </div>
             </div>
             <ThemeToggle />
