@@ -16,6 +16,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
 
+  if (pathname?.startsWith("/admin")) return null;
+
   const navItems = [
     { href: "/", label: t("navHome") },
     { href: "/solutions", label: t("navServices") },

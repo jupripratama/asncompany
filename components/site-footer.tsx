@@ -1,13 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Shield } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/brand-logo";
 import { company } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
 
 export function SiteFooter() {
+  const pathname = usePathname();
   const { t } = useLanguage();
+
+  if (pathname?.startsWith("/admin")) return null;
 
   const navItems = [
     { href: "/", label: t("navHome") },
@@ -67,7 +71,13 @@ export function SiteFooter() {
       <div className="border-t border-slate-200 dark:border-slate-800">
         <div className="site-container flex flex-col gap-2 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {company.legalName}. {t("footerCopyright")}</p>
-          <p>{company.tagline}</p>
+          <div className="flex items-center gap-4">
+            <p>{company.tagline}</p>
+            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <Link href="/admin" className="text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition inline-flex items-center gap-1 font-semibold">
+              <Shield className="size-3" /> Panel Admin
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
