@@ -1,93 +1,82 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Eye } from "lucide-react";
 import { company } from "@/lib/company";
-
-export const metadata: Metadata = {
-  title: "Tentang Kami",
-  description: `Profil perusahaan, visi, misi, dan keunggulan ${company.legalName} (${company.shortName}) sebagai mitra pengadaan terpercaya industri dan pertambangan di Indonesia.`,
-};
-
-const missions = [
-  {
-    number: "1",
-    title: "Menyediakan Produk Berkualitas",
-    description:
-      "Memastikan setiap produk dan suku cadang yang disuplai memenuhi standar teknik tinggi dan bergaransi resmi.",
-  },
-  {
-    number: "2",
-    title: "Layanan Cepat & Profesional",
-    description:
-      "Merespons setiap permintaan penawaran dan kebutuhan mendesak operasional site secara cepat dan akurat.",
-  },
-  {
-    number: "3",
-    title: "Solusi Efisien & Ekonomis",
-    description:
-      "Menawarkan struktur harga kompetitif yang menekan total cost of ownership tanpa kompromi kualitas.",
-  },
-  {
-    number: "4",
-    title: "Hubungan Jangka Panjang",
-    description:
-      "Membangun kemitraan strategis berlandaskan transparansi, integritas, dan konsistensi pelayanan.",
-  },
-];
-
-const pillars = [
-  {
-    title: "Harga Kompetitif",
-    description:
-      "Harga langsung dari principal dan distributor resmi untuk efisiensi anggaran pengadaan belanja operasional Anda.",
-  },
-  {
-    title: "Produk Berkualitas",
-    description:
-      "Standar uji mutu bersertifikasi, mill sheet material, dan garansi resmi pabrikan.",
-  },
-  {
-    title: "Multi Brand Solution",
-    description:
-      "Keluasan memilih merek terkemuka dunia sesuai preferensi teknis dan anggaran proyek Anda.",
-  },
-  {
-    title: "Pengiriman Tepat Waktu",
-    description:
-      "Koordinasi logistik darat, laut, dan udara untuk memastikan material tiba tepat waktu di remote site tambang.",
-  },
-  {
-    title: "Dukungan Teknis Responsif",
-    description:
-      "Bantuan pencocokan part number, kalkulasi teknis, dan pemilihan alat oleh tim teknis berdedikasi.",
-  },
-  {
-    title: "Fleksibel Sesuai Kebutuhan",
-    description:
-      "Menyesuaikan terms pengadaan dan jadwal pengiriman bertahap (staggered delivery) sesuai kondisi lapangan.",
-  },
-];
-
-const promisePoints = [
-  {
-    label: "CEPAT",
-    color: "text-[#00A3C4]",
-    description: "Respons penawaran dalam 24 jam & logistik sigap.",
-  },
-  {
-    label: "TEPAT",
-    color: "text-slate-900 dark:text-white",
-    description: "Kesesuaian part number dan spesifikasi teknis.",
-  },
-  {
-    label: "BERNILAI TAMBAH",
-    color: "text-emerald-500",
-    description: "Efisiensi total biaya dan masa pakai alat maksimal.",
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function AboutPage() {
+  const { t, language } = useLanguage();
+
+  const missions = [
+    {
+      number: "1",
+      title: t("aboutMission1Title"),
+      description: t("aboutMission1Desc"),
+    },
+    {
+      number: "2",
+      title: t("aboutMission2Title"),
+      description: t("aboutMission2Desc"),
+    },
+    {
+      number: "3",
+      title: t("aboutMission3Title"),
+      description: t("aboutMission3Desc"),
+    },
+    {
+      number: "4",
+      title: t("aboutMission4Title"),
+      description: t("aboutMission4Desc"),
+    },
+  ];
+
+  const pillars = [
+    {
+      title: t("aboutPillar1Title"),
+      description: t("aboutPillar1Desc"),
+    },
+    {
+      title: t("aboutPillar2Title"),
+      description: t("aboutPillar2Desc"),
+    },
+    {
+      title: t("aboutPillar3Title"),
+      description: t("aboutPillar3Desc"),
+    },
+    {
+      title: t("aboutPillar4Title"),
+      description: t("aboutPillar4Desc"),
+    },
+    {
+      title: t("aboutPillar5Title"),
+      description: t("aboutPillar5Desc"),
+    },
+    {
+      title: t("aboutPillar6Title"),
+      description: t("aboutPillar6Desc"),
+    },
+  ];
+
+  const promisePoints = [
+    {
+      label: t("aboutPromise1Label"),
+      color: "text-[#00A3C4]",
+      description: t("aboutPromise1Desc"),
+    },
+    {
+      label: t("aboutPromise2Label"),
+      color: "text-slate-900 dark:text-white",
+      description: t("aboutPromise2Desc"),
+    },
+    {
+      label: t("aboutPromise3Label"),
+      color: "text-emerald-500",
+      description: t("aboutPromise3Desc"),
+    },
+  ];
+
   return (
     <>
       {/* 1. Profil Perusahaan */}
@@ -96,29 +85,25 @@ export default function AboutPage() {
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="space-y-4 lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full bg-[#00A3C4]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#00A3C4]">
-                Profil Perusahaan
+                {t("aboutProfileEyebrow")}
               </div>
               <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl dark:text-white">
                 {company.legalName} ({company.shortName})
               </h1>
               <p className="text-lg font-semibold text-[#00A3C4]">{company.tagline}</p>
               <p className="pt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                {company.legalName} ({company.shortName}) adalah perusahaan yang bergerak di bidang{" "}
-                <strong className="font-semibold text-slate-900 dark:text-white">General Supplier</strong> dengan fokus pada
-                penyediaan kebutuhan{" "}
-                <strong className="font-semibold text-slate-900 dark:text-white">
-                  industri, pertambangan, konstruksi, dan infrastruktur
-                </strong>
-                . Kami menyediakan produk berkualitas dengan harga kompetitif untuk mendukung kelancaran operasional
-                pelanggan.
+                {t("aboutProfileP1")}
+              </p>
+              <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">
+                {t("aboutProfileP2")}
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-4">
                 <Link href="/contact" className="button-primary inline-flex">
-                  <span>Konsultasi & RFQ</span>
+                  <span>{t("btnConsultationRfq")}</span>
                   <ArrowRight className="size-4" />
                 </Link>
                 <Link href="/products" className="button-secondary inline-flex">
-                  Lihat Katalog Produk
+                  {t("btnAllProducts")}
                 </Link>
               </div>
             </div>
@@ -160,14 +145,13 @@ export default function AboutPage() {
                 <Eye className="size-6" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#00A3C4]">Visi Kami</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#00A3C4]">{t("aboutVisionLabel")}</span>
                 <h2 className="mt-2 text-2xl font-extrabold leading-snug tracking-tight sm:text-3xl">
-                  Menjadi mitra pengadaan terpercaya bagi industri Indonesia.
+                  {t("aboutVisionTitle")}
                 </h2>
               </div>
-              <p className="text-sm leading-relaxed text-slate-400">
-                Membangun rantai pasok material dan perlengkapan teknik yang terpercaya, berintegritas, dan mendukung kemajuan
-                sektor industri nasional.
+              <p className="text-sm leading-relaxed text-slate-300">
+                {t("aboutVisionText")}
               </p>
             </div>
           </div>
@@ -196,10 +180,10 @@ export default function AboutPage() {
       <section className="border-y border-slate-800 bg-[#0B192C] py-16 text-white sm:py-24">
         <div className="site-container">
           <div className="mx-auto mb-14 max-w-2xl text-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#00A3C4]">Keunggulan Layanan</span>
-            <h2 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">6 Pilar Keunggulan ASN</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#00A3C4]">{t("aboutPillarsEyebrow")}</span>
+            <h2 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">{t("aboutPillarsTitle")}</h2>
             <p className="mt-2 text-sm text-slate-400">
-              Kekuatan kami dalam mendukung rantai pasok industri dan pertambangan.
+              {t("aboutPillarsSubtitle")}
             </p>
           </div>
 
@@ -224,15 +208,17 @@ export default function AboutPage() {
       <section className="border-b border-slate-200 bg-white py-16 sm:py-20 dark:border-slate-800 dark:bg-[#070E1A]">
         <div className="site-container mx-auto max-w-4xl space-y-6 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-[#00A3C4]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#00A3C4]">
-            Komitmen Pelayanan
+            {t("aboutPromiseEyebrow")}
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 sm:text-3xl dark:text-white">
-            Janji Layanan {company.legalName}
+            {t("aboutPromiseTitle")}
           </h2>
           <blockquote className="text-base font-medium italic leading-relaxed text-slate-700 sm:text-xl dark:text-slate-300">
-            “ASN berkomitmen menjadi mitra terpercaya dalam pengadaan barang untuk industri dan pertambangan dengan
-            memberikan solusi yang <strong className="not-italic text-[#00A3C4]">cepat, tepat, dan bernilai tambah</strong>{" "}
-            bagi pelanggan.”
+            {language === "en" ? (
+              <>“ASN is dedicated to being a premier procurement partner by delivering solutions that are <strong className="not-italic text-[#00A3C4]">fast, accurate, and value-added</strong> for our clients.”</>
+            ) : (
+              <>“ASN berkomitmen menjadi mitra terpercaya dalam pengadaan barang untuk industri dan pertambangan dengan memberikan solusi yang <strong className="not-italic text-[#00A3C4]">cepat, tepat, dan bernilai tambah</strong> bagi pelanggan.”</>
+            )}
           </blockquote>
 
           <div className="mx-auto grid max-w-xl grid-cols-1 gap-4 pt-6 text-left sm:grid-cols-3">
@@ -249,7 +235,7 @@ export default function AboutPage() {
 
           <div className="pt-6">
             <Link href="/contact" className="button-primary inline-flex">
-              <span>Konsultasi Kebutuhan Anda</span>
+              <span>{t("btnConsultationRfq")}</span>
               <ArrowRight className="size-4" />
             </Link>
           </div>
