@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { company, whatsappUrl } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 
 const supportedBrands = [
   { name: "Hikvision", logo: "/images/brands/hikvision.svg" },
@@ -16,6 +17,8 @@ const supportedBrands = [
 
 export default function HomePage() {
   const { t, language } = useLanguage();
+  const { store } = useAdminStore();
+  const heroImage = store.hero?.homeHeroImage || "/images/hero.jpg";
 
   const services = [
     {
@@ -72,10 +75,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative isolate overflow-hidden bg-slate-950 text-white">
         <Image
-          src="/images/hero.jpg"
+          src={heroImage}
           alt="Peralatan industri dan pertambangan"
           fill
           priority
+          unoptimized={heroImage.startsWith("data:")}
           className="-z-20 object-cover opacity-35"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/90 to-cyan-950/35" />

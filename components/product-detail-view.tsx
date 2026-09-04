@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { whatsappUrl } from "@/lib/company";
 import { useLanguage } from "@/lib/language-context";
+import { useAdminStore } from "@/lib/admin-store";
 import type { Product, ProductCategory } from "@/lib/products";
 
 const categoryIcons: Record<ProductCategory, typeof Drill> = {
@@ -15,8 +16,11 @@ const categoryIcons: Record<ProductCategory, typeof Drill> = {
   fasteners: Nut,
 };
 
-export function ProductDetailView({ product }: { product: Product }) {
+export function ProductDetailView({ product: initialProduct }: { product: Product }) {
   const { t, language } = useLanguage();
+  const { store } = useAdminStore();
+  const product = store.products?.find((p) => p.slug === initialProduct.slug) || initialProduct;
+  const heroImage = store.hero?.productHeroImage || "/images/hero.jpg";
 
   const categoryBackLinks: Record<ProductCategory, { href: string; label: string }> = {
     mining: {
@@ -62,6 +66,14 @@ export function ProductDetailView({ product }: { product: Product }) {
     <main>
       {/* 1. Hero Dark Gradient */}
       <section className="relative overflow-hidden border-b border-slate-700 bg-[#07111f] text-white">
+        <Image
+          src={heroImage}
+          alt="Hero Background"
+          fill
+          priority
+          unoptimized={heroImage.startsWith("data:")}
+          className="-z-20 object-cover opacity-25"
+        />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(6,182,212,0.22),transparent_30%),linear-gradient(120deg,transparent_40%,rgba(15,23,42,0.5))]" />
         <div className="site-container relative py-10 sm:py-14 lg:py-18">
           <Link
