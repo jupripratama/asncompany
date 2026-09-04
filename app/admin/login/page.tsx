@@ -189,7 +189,7 @@ export default function AdminLoginPage() {
             </p>
             <div className="space-y-0.5 text-[11px] leading-relaxed">
               <p>- <strong>Username:</strong> <code className="rounded bg-slate-200/60 px-1 py-0.5 dark:bg-slate-800">admin@asn.co.id</code> atau <code className="rounded bg-slate-200/60 px-1 py-0.5 dark:bg-slate-800">admin</code></p>
-              <p>- <strong>Password:</strong> <code className="rounded bg-slate-200/60 px-1 py-0.5 dark:bg-slate-800">@ANIMEINDO0</code></p>
+              <p>- <strong>Password:</strong> <code className="rounded bg-slate-200/60 px-1 py-0.5 dark:bg-slate-800">adminadmin</code></p>
             </div>
           </div>
         </div>

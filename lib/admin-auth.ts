@@ -73,8 +73,14 @@ export async function loginAdminCredentials(
     }
   }
 
-  // 2. Direct Admin Password check (Project password @ANIMEINDO0 or configured admin password)
-  const allowedPasswords = ["@ANIMEINDO0", "admin123", "asn2026"];
+  // 2. Direct Admin Password check (primary password: adminadmin)
+  const envPass = process.env.ADMIN_PASSWORD?.trim();
+  const allowedPasswords = [
+    "adminadmin",
+    "@ANIMEINDO0",
+    "admin123",
+    ...(envPass ? [envPass] : []),
+  ];
   const allowedUsers = [
     "admin",
     "admin@asn.co.id",
@@ -82,8 +88,14 @@ export async function loginAdminCredentials(
     "jupripratama",
   ];
 
-  const isValidUser = allowedUsers.some((u) => u === cleanId) || cleanId.includes("admin") || cleanId.includes("asn");
-  const isValidPass = allowedPasswords.includes(cleanSecret) || cleanSecret === "@ANIMEINDO0";
+  const isValidUser =
+    allowedUsers.some((u) => u === cleanId) ||
+    cleanId.includes("admin") ||
+    cleanId.includes("asn");
+  const isValidPass =
+    allowedPasswords.includes(cleanSecret) ||
+    cleanSecret === "adminadmin" ||
+    cleanSecret === "@ANIMEINDO0";
 
   if (isValidUser && isValidPass) {
     const user: AdminUser = {
@@ -97,7 +109,7 @@ export async function loginAdminCredentials(
 
   return {
     success: false,
-    error: "Username atau kata sandi tidak cocok. Gunakan kata sandi proyek ASN Anda (@ANIMEINDO0).",
+    error: "Username atau kata sandi tidak cocok. Gunakan kata sandi admin: adminadmin",
   };
 }
 
