@@ -227,28 +227,48 @@ export async function fetchStoreFromSupabase(): Promise<Partial<AdminDataStore> 
   if (!supabase) return null;
 
   try {
+    const result: Partial<AdminDataStore> = {};
+
     const { data: prodData, error: prodErr } = await supabase
       .from("products")
       .select("*");
 
-    if (prodErr || !prodData || prodData.length === 0) {
-      return null;
+    if (!prodErr && prodData && prodData.length > 0) {
+      result.products = prodData.map((row: any) => ({
+        slug: row.slug,
+        name: row.name,
+        category: row.category,
+        categoryLabel: row.category_label || row.categoryLabel,
+        description: row.description,
+        highlights: Array.isArray(row.highlights) ? row.highlights : [],
+        standards: Array.isArray(row.standards) ? row.standards : [],
+        brands: Array.isArray(row.brands) ? row.brands : [],
+        images: Array.isArray(row.images) ? row.images : [],
+        variants: Array.isArray(row.variants) ? row.variants : [],
+      }));
     }
 
-    const fetchedProducts: Product[] = prodData.map((row: any) => ({
-      slug: row.slug,
-      name: row.name,
-      category: row.category,
-      categoryLabel: row.category_label || row.categoryLabel,
-      description: row.description,
-      highlights: Array.isArray(row.highlights) ? row.highlights : [],
-      standards: Array.isArray(row.standards) ? row.standards : [],
-      brands: Array.isArray(row.brands) ? row.brands : [],
-      images: Array.isArray(row.images) ? row.images : [],
-      variants: Array.isArray(row.variants) ? row.variants : [],
-    }));
+    const { data: rfqData, error: rfqErr } = await supabase
+      .from("rfqs")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-    return { products: fetchedProducts };
+    if (!rfqErr && rfqData && rfqData.length > 0) {
+      result.rfqs = rfqData.map((row: any) => ({
+        id: row.id,
+        requesterName: row.requester_name,
+        companyName: row.company_name,
+        email: row.email,
+        phone: row.phone,
+        category: row.category,
+        items: row.items,
+        createdAt: row.created_at,
+        status: row.status,
+        notes: row.internal_notes || undefined,
+      }));
+    }
+
+    return Object.keys(result).length > 0 ? result : null;
   } catch (err) {
     console.error("fetchStoreFromSupabase error:", err);
     return null;
@@ -327,3 +347,34 @@ export async function insertRfqToSupabase(rfq: {
     console.error("insertRfqToSupabase error:", err);
   }
 }
+
+/**
+ * Update RFQ status in Supabase table rfqs
+ */
+export async function updateRfqStatusInSupabase(id: string, status: string, notes?: string) {
+  const supabase = getSupabaseClient();
+  if (!supabase) return;
+
+  try {
+    const updateData: any = { status, updated_at: new Date().toISOString() };
+    if (notes !== undefined) updateData.internal_notes = notes;
+    await supabase.from("rfqs").update(updateData).eq("id", id);
+  } catch (err) {
+    console.error("updateRfqStatusInSupabase error:", err);
+  }
+}
+
+/**
+ * Delete an RFQ from Supabase table rfqs
+ */
+export async function deleteRfqFromSupabase(id: string) {
+  const supabase = getSupabaseClient();
+  if (!supabase) return;
+
+  try {
+    await supabase.from("rfqs").delete().eq("id", id);
+  } catch (err) {
+    console.error("deleteRfqFromSupabase error:", err);
+  }
+}
+

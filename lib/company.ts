@@ -29,9 +29,10 @@ export function whatsappUrl(message?: string) {
 }
 
 export function emailUrl(subject?: string, body?: string) {
-  const params = new URLSearchParams();
-  if (subject) params.set("subject", subject);
-  if (body) params.set("body", body);
-  const query = params.toString();
-  return `mailto:${company.email}${query ? `?${query}` : ""}`;
+  const parts: string[] = [];
+  if (subject) parts.push(`subject=${encodeURIComponent(subject)}`);
+  if (body) parts.push(`body=${encodeURIComponent(body)}`);
+  const query = parts.length > 0 ? `?${parts.join("&")}` : "";
+  return `mailto:${company.email}${query}`;
 }
+

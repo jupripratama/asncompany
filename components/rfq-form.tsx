@@ -32,38 +32,129 @@ export function RfqForm() {
     items: searchParams.get("product") ? `${searchParams.get("product")} — ` : "",
   });
 
-  const message = useMemo(() => {
-    const selectedCategory = categoryLabels[form.category]?.[language] || form.category;
+  const selectedCategoryLabel = useMemo(() => {
+    return categoryLabels[form.category]?.[language] || form.category;
+  }, [form.category, language]);
+
+  const emailSubject = useMemo(() => {
+    const sender = form.companyName ? `${form.companyName} (${form.name})` : form.name;
+    return language === "en"
+      ? `[RFQ] Request for Quotation - ${sender || "CV Agape Sinar Nirwana"} (${selectedCategoryLabel})`
+      : `[RFQ] Permintaan Penawaran Harga - ${sender || "CV Agape Sinar Nirwana"} (${selectedCategoryLabel})`;
+  }, [form.companyName, form.name, selectedCategoryLabel, language]);
+
+  const emailBody = useMemo(() => {
     if (language === "en") {
       return [
-        `Hello ${company.legalName},`,
+        `Dear Sales & Commercial Team,`,
+        `CV Agape Sinar Nirwana`,
+        `Balikpapan, East Kalimantan`,
         "",
-        "I would like to submit a formal Request for Quotation (RFQ):",
-        `- PIC: ${form.name}`,
-        `- Company/Site: ${form.companyName}`,
-        `- Email: ${form.email}`,
-        `- WhatsApp/Phone: ${form.phone}`,
-        `- Category: ${selectedCategory}`,
-        `- Requirements: ${form.items}`,
+        `Dear Sir/Madam,`,
         "",
-        "Please provide your best quotation and availability. Thank you.",
+        `In relation to our operational requirements, we would like to submit a formal Request for Quotation (RFQ) with the following details:`,
+        "",
+        `REQUESTER INFORMATION:`,
+        `• PIC Name            : ${form.name}`,
+        `• Company / Site      : ${form.companyName || "-"}`,
+        `• Email Address       : ${form.email}`,
+        `• WhatsApp / Phone    : ${form.phone}`,
+        `• Product Category    : ${selectedCategoryLabel}`,
+        "",
+        `REQUIREMENTS & SPECIFICATIONS:`,
+        form.items,
+        "",
+        `KINDLY PROVIDE QUOTATION INCLUDING:`,
+        `1. Official commercial quotation (unit price & total)`,
+        `2. Stock availability & delivery lead time`,
+        `3. Shipping terms & estimated delivery to our site`,
+        `4. Payment terms & proposal validity period`,
+        "",
+        `Thank you for your assistance and prompt cooperation. We look forward to receiving your quotation.`,
+        "",
+        `Best regards,`,
+        form.name,
+        form.companyName || "",
+      ].filter(Boolean).join("\n");
+    }
+
+    return [
+      `Yth. Tim Komersial & Pengadaan (Sales & Procurement)`,
+      `CV Agape Sinar Nirwana`,
+      `Balikpapan, Kalimantan Timur`,
+      "",
+      `Dengan hormat,`,
+      "",
+      `Sehubungan dengan kebutuhan operasional perusahaan kami, bersama ini kami mengajukan Permintaan Penawaran Harga (Request for Quotation - RFQ) resmi dengan rincian sebagai berikut:`,
+      "",
+      `INFORMASI PEMOHON:`,
+      `• Nama PIC / Kontak    : ${form.name}`,
+      `• Perusahaan / Site    : ${form.companyName || "-"}`,
+      `• Email Resmi          : ${form.email}`,
+      `• No. WhatsApp/Telepon : ${form.phone}`,
+      `• Kategori Produk      : ${selectedCategoryLabel}`,
+      "",
+      `RINCIAN KEBUTUHAN & SPESIFIKASI BARANG:`,
+      form.items,
+      "",
+      `MOHON INFORMASI PENAWARAN MENCAKUP:`,
+      `1. Surat Penawaran Resmi (Formal Quotation)`,
+      `2. Ketersediaan stok (Ready Stock / Indent Lead Time)`,
+      `3. Syarat & estimasi waktu pengiriman ke lokasi site kami`,
+      `4. Ketentuan pembayaran (Terms of Payment) dan masa berlaku penawaran`,
+      "",
+      `Demikian permohonan ini kami sampaikan. Kami menantikan penawaran terbaik dari CV Agape Sinar Nirwana.`,
+      `Atas perhatian, respons cepat, dan kerja sama yang baik, kami ucapkan terima kasih.`,
+      "",
+      `Hormat kami,`,
+      form.name,
+      form.companyName || "",
+    ].filter(Boolean).join("\n");
+  }, [form, selectedCategoryLabel, language]);
+
+  const whatsappMessage = useMemo(() => {
+    if (language === "en") {
+      return [
+        `*REQUEST FOR QUOTATION (RFQ)*`,
+        `*CV AGAPE SINAR NIRWANA*`,
+        `─────────────────────────`,
+        `Hello ASN Sales Team, I would like to submit a request for quotation with the following details:`,
+        "",
+        `*Requester Information:*`,
+        `• PIC Name: ${form.name}`,
+        `• Company/Site: ${form.companyName || "-"}`,
+        `• Email: ${form.email}`,
+        `• Phone/WA: ${form.phone}`,
+        `• Category: ${selectedCategoryLabel}`,
+        "",
+        `*Requirements & Specifications:*`,
+        form.items,
+        "",
+        `─────────────────────────`,
+        `Please provide your official quotation and stock availability. Thank you.`,
       ].join("\n");
     }
 
     return [
-      `Halo ${company.legalName},`,
+      `*PERMINTAAN PENAWARAN HARGA (RFQ)*`,
+      `*CV AGAPE SINAR NIRWANA*`,
+      `─────────────────────────`,
+      `Halo Tim Sales ASN, saya ingin mengajukan permohonan penawaran harga resmi dengan rincian berikut:`,
       "",
-      "Saya ingin mengajukan Permintaan Penawaran Harga (RFQ):",
-      `- PIC: ${form.name}`,
-      `- Perusahaan/Site: ${form.companyName}`,
-      `- Email: ${form.email}`,
-      `- Telepon/WhatsApp: ${form.phone}`,
-      `- Kategori: ${selectedCategory}`,
-      `- Kebutuhan: ${form.items}`,
+      `*Data Pemohon:*`,
+      `• Nama PIC: ${form.name}`,
+      `• Perusahaan/Site: ${form.companyName || "-"}`,
+      `• Email: ${form.email}`,
+      `• No. Telp/WA: ${form.phone}`,
+      `• Kategori: ${selectedCategoryLabel}`,
       "",
-      "Mohon dapat ditindaklanjuti. Terima kasih.",
+      `*Rincian Kebutuhan & Spesifikasi:*`,
+      form.items,
+      "",
+      `─────────────────────────`,
+      `Mohon dapat dikirimkan surat penawaran harga resmi (Quotation) dan informasi ketersediaan stoknya. Terima kasih.`,
     ].join("\n");
-  }, [form, language]);
+  }, [form, selectedCategoryLabel, language]);
 
   function validate() {
     return formRef.current?.reportValidity() ?? false;
@@ -82,7 +173,7 @@ export function RfqForm() {
         status: "new",
       });
     } catch (_) {}
-    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+    window.open(whatsappUrl(whatsappMessage), "_blank", "noopener,noreferrer");
   }
 
   function sendEmail() {
@@ -98,7 +189,7 @@ export function RfqForm() {
         status: "new",
       });
     } catch (_) {}
-    window.location.href = emailUrl(`RFQ — ${form.companyName || form.name}`, message);
+    window.location.href = emailUrl(emailSubject, emailBody);
   }
 
   function update(field: keyof typeof form, value: string) {

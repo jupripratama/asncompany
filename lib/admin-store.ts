@@ -5,8 +5,10 @@ import { company as initialCompany } from "@/lib/company";
 import { products as initialProducts, type Product } from "@/lib/products";
 import {
   deleteProductFromSupabase,
+  deleteRfqFromSupabase,
   fetchStoreFromSupabase,
   insertRfqToSupabase,
+  updateRfqStatusInSupabase,
   upsertProductToSupabase,
 } from "@/lib/supabase";
 
@@ -259,9 +261,13 @@ export function useAdminStore() {
 
     // Background sync from Supabase if connected
     fetchStoreFromSupabase().then((remoteData) => {
-      if (remoteData?.products && remoteData.products.length > 0) {
+      if (remoteData) {
         setStore((prev) => {
-          const updated = { ...prev, products: remoteData.products! };
+          const updated = {
+            ...prev,
+            ...(remoteData.products?.length ? { products: remoteData.products } : {}),
+            ...(remoteData.rfqs?.length ? { rfqs: remoteData.rfqs } : {}),
+          };
           saveAdminStore(updated);
           return updated;
         });
@@ -328,6 +334,14 @@ export function useAdminStore() {
     const nextRfqs = store.rfqs.map((rfq) => (rfq.id === id ? { ...rfq, status, ...(notes !== undefined ? { notes } : {}) } : rfq));
     const nextStore = { ...store, rfqs: nextRfqs };
     saveAdminStore(nextStore);
+    updateRfqStatusInSupabase(id, status, notes);
+  }
+
+  function deleteRfq(id: string) {
+    const nextRfqs = store.rfqs.filter((rfq) => rfq.id !== id);
+    const nextStore = { ...store, rfqs: nextRfqs };
+    saveAdminStore(nextStore);
+    deleteRfqFromSupabase(id);
   }
 
   function addRfq(newRfq: Omit<AdminRfq, "id" | "createdAt">) {
@@ -352,6 +366,7 @@ export function useAdminStore() {
     updateAbout,
     updateCompany,
     updateRfqStatus,
+    deleteRfq,
     addRfq,
     resetToDefault: resetAdminStore,
   };

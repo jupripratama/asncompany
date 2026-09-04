@@ -18,7 +18,7 @@ import { useState } from "react";
 import { useAdminStore, type AdminRfq } from "@/lib/admin-store";
 
 export default function AdminContactPage() {
-  const { store, mounted, updateCompany, updateRfqStatus } = useAdminStore();
+  const { store, mounted, updateCompany, updateRfqStatus, deleteRfq } = useAdminStore();
   const [activeTab, setActiveTab] = useState<"rfqs" | "company">("rfqs");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [rfqSearch, setRfqSearch] = useState("");
@@ -217,6 +217,19 @@ export default function AdminContactPage() {
                             >
                               WA
                             </a>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (confirm(`Hapus permintaan RFQ dari ${rfq.requesterName} (${rfq.companyName})?`)) {
+                                  deleteRfq(rfq.id);
+                                  showNotice("Permintaan RFQ berhasil dihapus.");
+                                }
+                              }}
+                              title="Hapus RFQ"
+                              className="rounded-lg p-1 text-slate-400 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40"
+                            >
+                              <Trash2 className="size-3.5" />
+                            </button>
                           </div>
                         </td>
                       </tr>
@@ -295,10 +308,25 @@ export default function AdminContactPage() {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-3 border-t border-slate-200 dark:border-slate-800">
-                  <span className="text-[10px] text-slate-400">
-                    Masuk pada: {new Date(selectedRfq.createdAt).toLocaleString("id-ID")}
-                  </span>
+                <div className="flex flex-col gap-2 pt-3 border-t border-slate-200 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] text-slate-400">
+                      Masuk: {new Date(selectedRfq.createdAt).toLocaleString("id-ID")}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (confirm(`Hapus permintaan RFQ dari ${selectedRfq.requesterName} (${selectedRfq.companyName})?`)) {
+                          deleteRfq(selectedRfq.id);
+                          setSelectedRfq(null);
+                          showNotice("Permintaan RFQ berhasil dihapus.");
+                        }
+                      }}
+                      className="text-[11px] font-bold text-rose-600 hover:text-rose-700 dark:text-rose-400 inline-flex items-center gap-1"
+                    >
+                      <Trash2 className="size-3" /> Hapus
+                    </button>
+                  </div>
                   <div className="flex items-center gap-2">
                     <a
                       href={`mailto:${selectedRfq.email}?subject=Penawaran Harga ASN — ${encodeURIComponent(
